@@ -1,0 +1,38 @@
+[push]
+  default = simple
+
+# [user]
+#   name = User Name
+#   email = email@example.com
+
+[core]
+	autocrlf = true
+
+[alias]
+  st = status
+  co = checkout
+  dev = checkout develop
+  cm = commit
+  br = branch
+  chp = cherry-pick
+  sbup = submodule update --init --recursive
+  amd = commit -a --amend
+
+  diffc = diff --cached
+  diffh = diff HEAD
+
+  branch-name = "! git symbolic-ref -q --short HEAD || echo -n ''"
+  tag-name = "! git describe --tags --exact-match 2>/dev/null"
+
+  brfz = "! f() { git branch --format='%(refname:short)' | fzf; } ; f"
+  cofz = "! f() { git checkout `git brfz`; } ; f"
+  push-su = "! f() { git push --set-upstream origin `git branch-name`; } ; f"
+
+  hist = log --pretty='%C(yellow)%h%C(reset) %C(green)%ci%C(reset) %s %C(cyan)%an%C(reset)'
+  hist-nc = log --pretty='%h - %ci - %s - %an'
+  hist-gr = log --graph --pretty=oneline --abbrev-commit
+  hist-of =  "! f() { echo $1; PAGER= git hist $1~${2-1}..$1; echo; } ; f"
+
+  last-release = "! git branch | grep 'release/v2' | tail -n1 |  tr -d '*' | tr -d ' '"
+  last-commit = "! echo `git log -1 --pretty='%H'`"
+  last-files = "! f() { git log ${1-'-1'} --name-only --pretty='format:' | sort | uniq | sed -e '/^$/d' ;} ; f"

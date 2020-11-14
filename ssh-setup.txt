@@ -1,0 +1,12 @@
+# *) create new config
+mkdir -p ~/.ssh && touch ~/.ssh/config && chmod 600 ~/.ssh/config
+ssh-keygen
+
+# put to ~/.ssh/config
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+# *) in case of copied files
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/* && chmod 644 -f ~/.ssh/*.pub ~/.ssh/authorized_keys ~/.ssh/known_hosts

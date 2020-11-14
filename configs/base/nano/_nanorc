@@ -1,0 +1,43 @@
+set morespace
+set multibuffer
+#set nohelp            # perhaps comment out until comfortable
+set quickblank
+set regexp
+set smooth
+set tabsize 2
+
+unbind ^K main
+unbind ^U main
+unbind ^W main
+
+unbind F3 main
+unbind F4 main
+
+bind ^O insert main
+bind ^S savefile main
+bind ^Q exit main
+bind ^A help main
+
+bind ^P prevword main
+bind ^N nextword main
+bind ^B firstline main
+bind ^E lastline main
+bind ^L curpos main
+bind ^J gotoline main
+
+bind ^Space mark main
+bind ^X cut main
+## bind ^C copytext main
+## bind ^V uncut main
+
+bind ^F whereis main
+## bind ^G searchagain main
+bind ^H replace main
+
+bind ^Z undo main
+bind ^Y redo main
+
+bind M-A nohelp main
+## bind M-L constupdate main
+
+bind M-Z suspend main
