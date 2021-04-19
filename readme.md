@@ -11,6 +11,9 @@ git clone https://oauth2:__token__@gitlab.com/artas90/dotfiles.git ~/.dotfiles
 ```sh
 mv ~/.zshrc ~/.zshrc.old
 echo 'source ~/.dotfiles/zsh/init.zsh' > ~/.zshrc
+
+# optional
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 ```
 
 ### 3. create ~/.zshrc_custom (optional)
@@ -20,5 +23,5 @@ touch ~/.zshrc_custom
 
 ### 4. copy configs
 ```sh
-(cd configs && bash setup-base.sh)
+(cd ~/.dotfiles/configs && bash setup-base.sh)
 ```
