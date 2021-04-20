@@ -1,0 +1,11 @@
+fisher install jorgebucaran/nvm.fish
+fisher install oh-my-fish/plugin-pyenv
+fisher install oh-my-fish/plugin-rbenv
+fisher install 2m/fish-jabba
+
+fisher install jorgebucaran/autopair.fish
+fisher install jethrokuan/fzf
+
+fisher install jorgebucaran/replay.fish
+fisher install oh-my-fish/plugin-extract
+fisher install franciscolourenco/done  # check details on site

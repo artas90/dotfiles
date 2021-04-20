@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # bacis utils
-brew install zsh
+brew install fish
 brew install midnight-commander
 brew install micro
 brew install curl
@@ -10,19 +10,24 @@ brew install htop
 brew install git
 brew install fzf
 brew install ripgrep
+# brew install zsh
 
 # useful utils
 brew install ncdu
-brew install tig
+brew install gitui
 brew install jq
 brew install entr
 brew install pv
-brew install aria2
 brew install caddy
-brew install s3cmd
-brew install fdupes
+# brew install aria2
+# brew install fdupes
+# brew install s3cmd
+
+# version managers
+brew install pyenv
+brew install rbenv
 brew install jabba
-brew install nvm
+# brew install nvm
 
 # gnu version of core utils
 brew install coreutils
@@ -37,4 +42,4 @@ brew install grep
 brew install gawk
 
 # homebrew install utils
-brew install martido/brew-graph/brew-graph
+# brew install martido/brew-graph/brew-graph
