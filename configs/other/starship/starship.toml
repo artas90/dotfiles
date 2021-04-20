@@ -1,0 +1,11 @@
+#add_newline = false
+
+[directory]
+style = "bold green"
+
+[character]
+success_symbol = "[λ](white bold)"
+error_symbol = "[λ](red bold)"
+
+[cmd_duration]
+disabled = true

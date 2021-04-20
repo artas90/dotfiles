@@ -14,6 +14,9 @@ echo 'source ~/.dotfiles/zsh/init.zsh' > ~/.zshrc
 
 # optional
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+
+# optional
+echo 'source ~/.dotfiles/fish/init.fish' > ~/.config/fish/config.fish
 ```
 
 ### 3. create ~/.zshrc_custom (optional)
