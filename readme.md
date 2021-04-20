@@ -14,9 +14,6 @@ echo 'source ~/.dotfiles/zsh/init.zsh' > ~/.zshrc
 
 # optional
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
-
-# optional
-echo 'source ~/.dotfiles/fish/init.fish' > ~/.config/fish/config.fish
 ```
 
 ### 3. create ~/.zshrc_custom (optional)
@@ -27,4 +24,9 @@ touch ~/.zshrc_custom
 ### 4. copy configs
 ```sh
 (cd ~/.dotfiles/configs && bash setup-base.sh)
+```
+
+### 5. update config.fish (optional)
+```sh
+echo 'source ~/.dotfiles/fish/init.fish' > ~/.config/fish/config.fish
 ```
