@@ -2,15 +2,16 @@
 
 # bacis utils
 brew install fish
+brew install starship
 brew install midnight-commander
 brew install micro
 brew install curl
 brew install wget
 brew install htop
-brew install git
 brew install fzf
 brew install ripgrep
 # brew install zsh
+# brew install git
 
 # useful utils
 brew install ncdu
