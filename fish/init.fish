@@ -14,13 +14,15 @@ set -gx EDITOR micro
 set -gx VISUAL micro
 
 # use gnu version of utils(find, grep, aws, etc.) on osx by default
-if type gfind &>/dev/null
-  set GNUBINPATH (gfind -L /usr/local/opt -maxdepth 3 -type d -name gnubin)
-  set GNUMANPATH (gfind -L /usr/local/opt -maxdepth 3 -type d -name gnuman)
+# if type gfind &>/dev/null
+#   set GNUBINPATH (gfind -L /usr/local/opt -maxdepth 3 -type d -name gnubin)
+#   set GNUMANPATH (gfind -L /usr/local/opt -maxdepth 3 -type d -name gnuman)
 
-  set PATH $GNUBINPATH $PATH
-  set MANPATH $GNUMANPATH $MANPATH
-end
+#   set PATH $GNUBINPATH $PATH
+#   set MANPATH $GNUMANPATH $MANPATH
+# end
+
+set PATH $PATH "$HOME/.dotfiles/bin"
 
 # custom functions
 
