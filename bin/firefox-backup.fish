@@ -30,3 +30,7 @@ mv FirefoxProfile _backup
 
 echo
 echo "* _FirefoxProfile.tgz created *"
+
+
+# - on windows install sqlite -
+# pacman -S mingw64-x86_64-sqlite3
