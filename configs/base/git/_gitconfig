@@ -6,7 +6,11 @@
 #   email = email@example.com
 
 [core]
-	autocrlf = true
+	autocrlf = false
+	eol = lf
+
+# [core]
+#   autocrlf = true
 
 [alias]
   st = status
