@@ -1,3 +1,4 @@
 *
 !.gitignore
-!firefox-backup.fish
+!dfb-firefox-backup
+!dfb-update

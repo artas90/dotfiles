@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for f in `ls $HOME/.dotfiles/bin | grep -v .gitignore`
+do
+  chmod +x "$HOME/.dotfiles/bin/$f"
+  echo "$f"
+done
