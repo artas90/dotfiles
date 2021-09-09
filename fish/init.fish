@@ -24,12 +24,16 @@ set -gx VISUAL micro
 
 set PATH $PATH "$HOME/.dotfiles/bin"
 
+function `
+  fish -c (string join -- " " $argv)
+end
+
 # custom functions
 
-function dict_set --argument-names dict key value
-  set -g $dict'__'$key $value
-end
+# function dict-set --argument-names dict key value
+#   set -g $dict'__'$key $value
+# end
 
-function dict_get --argument-names dict key
-  eval echo \$$dict'__'$key
-end
+# function dict-get --argument-names dict key
+#   eval echo \$$dict'__'$key
+# end

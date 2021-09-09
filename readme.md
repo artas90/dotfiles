@@ -23,9 +23,10 @@ cd ~/.dotfiles/configs && bash setup-base.sh
 mv ~/.zshrc ~/.zshrc.old
 echo 'source ~/.dotfiles/zsh/init.zsh' > ~/.zshrc
 
-# optional
+# only for zsh on mac
+brew install nvm
+
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
-# optional
 touch ~/.zshrc_custom
 ```

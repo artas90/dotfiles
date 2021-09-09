@@ -94,13 +94,13 @@ if [[ $OSTYPE == msys* ]]; then
 fi
 
 # use gnu version of utils(find, grep, aws, etc.) on osx by default
-if [ `type gfind &>/dev/null && echo 1` ]; then
-  GNUBINS=`gfind -L /usr/local/opt -maxdepth 3 -type d -name gnubin -printf '%p:'`
-  GNUMANPATH=`gfind -L /usr/local/opt -maxdepth 3 -type d -name gnuman -printf '%p:'`
+# if [ `type gfind &>/dev/null && echo 1` ]; then
+#   GNUBINS=`gfind -L /usr/local/opt -maxdepth 3 -type d -name gnubin -printf '%p:'`
+#   GNUMANPATH=`gfind -L /usr/local/opt -maxdepth 3 -type d -name gnuman -printf '%p:'`
 
-  export PATH="$GNUBINS$PATH"
-  export MANPATH="$GNUMANPATH$MANPATH"
-fi
+#   export PATH="$GNUBINS$PATH"
+#   export MANPATH="$GNUMANPATH$MANPATH"
+# fi
 
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
