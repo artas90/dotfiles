@@ -7,26 +7,26 @@ git clone https://github.com/artas90/dotfiles.git ~/.dotfiles
 git clone https://oauth2:__token__@gitlab.com/artas90/dotfiles.git ~/.dotfiles
 ```
 
-### 2. update config.fish
-```sh
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-echo 'source ~/.dotfiles/fish/init.fish' > ~/.config/fish/config.fish
-```
-
-### 3. copy configs
+### 2. copy configs
 ```sh
 cd ~/.dotfiles/configs && bash setup-base.sh
 ```
 
-### 4. update ~/.zshrc (optional)
+### 3. update ~/.zshrc
 ```sh
 mv ~/.zshrc ~/.zshrc.old
 echo 'source ~/.dotfiles/zsh/init.zsh' > ~/.zshrc
-
-# only for zsh on mac
-brew install nvm
-
-echo 'eval "$(starship init zsh)"' >> ~/.zshrc
-
 touch ~/.zshrc_custom
+
+# (optional) custom prompt
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc_custom
+
+# (optional) only for zsh on mac
+brew install nvm
+```
+
+### 4. update config.fish
+```sh
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+echo 'source ~/.dotfiles/fish/init.fish' > ~/.config/fish/config.fish
 ```
