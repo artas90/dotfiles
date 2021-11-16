@@ -52,7 +52,6 @@ _zsh_init
 
 _zsh_add_plugin "python"
 _zsh_add_plugin "pip"
-_zsh_add_plugin "django"
 _zsh_add_plugin "docker"
 _zsh_add_plugin "fzf"
 _zsh_add_plugin "sublime"
