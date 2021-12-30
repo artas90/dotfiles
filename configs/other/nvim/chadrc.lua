@@ -3,8 +3,10 @@ local M = {}
 M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
 M.mappings = {
-  new_buffer = "<C-n>",
-  close_buffer = "<C-w>",
+  misc = {
+    new_buffer = "<C-n>",
+    close_buffer = "<C-w>",
+  }
 }
 
 M.mappings.plugins = {
@@ -12,5 +14,16 @@ M.mappings.plugins = {
     toggle = "<C-e>"
   }
 }
+
+M.plugins = {
+  options = {
+    nvimtree = {
+      ui = {
+        hide_root_folder = false
+      }
+    }
+  }
+}
+
 
 return M
