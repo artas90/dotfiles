@@ -1,9 +1,10 @@
 #!/bin/sh
 
-_cfg_initial=`test ! -d "$HOME/.config/nvim" && echo 1`
+_init=`test ! -d "$HOME/.config/nvim" && echo 1`
 
 # -- general config initial clone --
-test -n "$_cfg_initial" && git clone https://github.com/NvChad/NvChad ~/.config/nvim
+mkdir -p $HOME/.config
+test -n "$_init" && git clone https://github.com/NvChad/NvChad ~/.config/nvim
 
 # -- copy configs --
 mkdir -p $HOME/.config/nvim/lua/custom
@@ -17,5 +18,4 @@ cp -f "$(pwd)/init.lua" $_init_to
 echo "Copied to $_init_to"
 
 # -- initial setup --
-test -n "$_cfg_initial" && nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
-
+test -n "$_init" && nvim +'hi NormalFloat guibg=#1e222a' +PackerSync

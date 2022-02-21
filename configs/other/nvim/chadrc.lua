@@ -18,7 +18,7 @@ M.mappings.plugins = {
 M.plugins = {
   options = {
     nvimtree = {
-      ui = {
+      view = {
         hide_root_folder = false
       }
     }
