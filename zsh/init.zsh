@@ -59,7 +59,6 @@ _zsh_add_plugin "git"
 _zsh_add_plugin "git-extras"
 _zsh_add_plugin "tig"
 _zsh_add_plugin "urltools"
-_zsh_add_plugin "kubectl"
 
 #_zsh_load_plugin "chrissicool/zsh-256color"
 #_zsh_load_plugin "zsh-users/zsh-syntax-highlighting"

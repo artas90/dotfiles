@@ -13,6 +13,10 @@ alias grepc="GREP_COLOR='1;36' grep --color=always"
 alias y="yarn"
 alias yr="yarn run"
 
+ps5() {
+  ps aux | sort -nrk 3,3 | head -n 5
+}
+
 mo() {
   micro $(fzf --reverse --height 40%)
 }
@@ -49,7 +53,9 @@ if [[ $OSTYPE == linux-* ]]; then
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  lsframework="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework"
-  lsregister="$lsframework/Versions/A/Support/lsregister"
-  alias osx_fix_menu_items="sudo $lsregister -kill -r -domain local -domain system -domain user"
+  osx_fix_menu_items() {
+    local lsframework="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework"
+    local lsregister="$lsframework/Versions/A/Support/lsregister"
+    sudo $lsregister -kill -r -domain local -domain system -domain user
+  }
 fi
