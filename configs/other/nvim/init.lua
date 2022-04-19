@@ -16,3 +16,6 @@ map("n", "<c-p>", ":Telescope find_files<CR>", opt)
 
 -- misc
 map("n", "<leader>tt", ":Telescope builtin<CR>", opt)
+
+vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
+

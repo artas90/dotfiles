@@ -17,13 +17,11 @@ M.mappings.plugins = {
 
 M.plugins = {
   options = {
-    nvimtree = {
-      view = {
-        hide_root_folder = false
-      }
+    statusline = {
+      style = "block"
     }
   }
 }
 
-
 return M
+
