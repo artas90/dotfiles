@@ -9,8 +9,8 @@
 	autocrlf = false
 	eol = lf
 
-# [core]
-#   autocrlf = true
+[init]
+    defaultBranch = main
 
 [alias]
   st = status
@@ -37,6 +37,31 @@
   hist-gr = log --graph --pretty=oneline --abbrev-commit
   hist-of =  "! f() { echo $1; PAGER= git hist $1~${2-1}..$1; echo; } ; f"
 
-  last-release = "! git branch | grep 'release/v2' | tail -n1 |  tr -d '*' | tr -d ' '"
+  last-release = "! git branch | grep 'release/' | tail -n1 |  tr -d '*' | tr -d ' '"
   last-commit = "! echo `git log -1 --pretty='%H'`"
   last-files = "! f() { git log ${1-'-1'} --name-only --pretty='format:' | sort | uniq | sed -e '/^$/d' ;} ; f"
+
+
+# -- delta pager config -- -- --
+
+#[core]
+#    pager = delta
+#[interactive]
+#    diffFilter = delta --color-only
+
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[delta]
+    file-style = bold cyan ul
+    file-decoration-style = none
+    hunk-header-style = omit
+    line-numbers = true
+    line-numbers-minus-style = "red"
+    line-numbers-zero-style = "gray"
+    line-numbers-plus-style = "green"
+    line-numbers-left-format ="{nm:>4}│"
+    line-numbers-right-format ="{np:>4}│ "
+    line-numbers-left-style = gray
+    line-numbers-right-style = cyan
