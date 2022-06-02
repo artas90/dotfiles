@@ -1,0 +1,100 @@
+#!/bin/sh
+
+cmd_main() {
+  local cmd="$1" # scp | docker
+  local from="$2"
+  local to="$3"
+
+  if _has_empty "$cmd" "$from" "$to" || ! _is_in "$cmd" "scp" "docker"; then
+    echo 'Usage: syncto scp|docker <local-path> <remote>:<root-path>'
+    echo
+    return
+  fi
+
+  local thisdir=`pwd`
+
+  _check_control_path "$cmd"
+  ulimit -n 9999
+
+  echo "Syncing \"$from\" to \"$to\" via \"$cmd\"..."
+
+  find "$from" -type f | entr echo /_ | $0 "_$cmd" "$thisdir" "$to"
+  # fd --full-path --type f "$from" | entr echo /_ | $0 "_$cmd" "$thisdir" "$to"
+}
+
+_check_control_path() {
+  local cmd="$1"
+
+  if [ "$cmd" != "scp" ]; then return; fi
+
+  if [ -n "$SSH_CONTROL_PATH" ]; then
+    export controlpath="-o ControlPath=$SSH_CONTROL_PATH"
+    return
+  fi
+
+  echo
+  echo 'Recomendation to speed up upload via scp:'
+  echo
+  echo '  Login in a first shell and share connection:'
+  echo '    ssh -o ControlPath=~/.ssh/some-shared -o ControlMaster=auto -o ControlPersist=9999 some.host'
+  echo 
+  echo '  Then in a second shell set this parameter before run:'
+  echo '    export SSH_CONTROL_PATH="~/.ssh/some-shared"'
+  echo '    syncto some/path some.host:/remote/path'
+  echo
+}
+
+cmd_subcmd() {
+  local subcmd="$1" # _scp | _docker
+  local thisdir="$2"
+  local to="$3"
+
+  if _has_empty "$subcmd" "$thisdir" "$to"; then return; fi
+
+  local cmd=""
+  local first=""
+  local filename=""
+
+  while read filename; do
+    # HACK: skip first result of entr
+    if [ -z "$first" ]; then first="1"; continue; fi
+
+    filename=`echo $filename | sed -e "s#^$thisdir/##g"`
+
+    if [ "$subcmd" = "_scp" ]; then
+      cmd=`echo $filename | sed -e "s#\(.*\)#scp $controlpath \1 $to/\1#"`
+    elif [ "$subcmd" = "_docker" ]; then
+      cmd=`echo $filename | sed -e "s#\(.*\)#docker cp \1 $to/\1#"`
+    fi
+
+    echo
+    echo "$cmd"
+    sh -c "$cmd"
+  done < /dev/stdin
+}
+
+_has_empty() {
+  for var in "$@"; do
+    if [ -z "$var" ]; then return 0; fi
+  done
+  return 1
+}
+
+_is_in() {
+  local x="$1"; shift
+  for var in "$@"; do
+    if [ "$var" = "$x" ]; then return 0; fi
+  done
+  return 1
+}
+
+_ontrap() {
+  exit
+}
+trap _ontrap INT
+
+if _is_in "$1" "_scp" "_docker"; then
+  cmd_subcmd $@
+else
+  cmd_main $@
+fi

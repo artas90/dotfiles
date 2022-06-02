@@ -13,6 +13,14 @@ alias grepc="GREP_COLOR='1;36' grep --color=always"
 alias y="yarn"
 alias yr="yarn run"
 
+dfb-update() {
+  for f in `ls $HOME/.dotfiles/bin | grep -v .gitignore | grep -v tmp`
+  do
+    chmod +x "$HOME/.dotfiles/bin/$f"
+    echo "$f"
+  done
+}
+
 ps5() {
   ps aux | sort -nrk 3,3 | head -n 5
 }
@@ -23,16 +31,6 @@ mo() {
 
 s3put() {
   s3cmd put --acl-public --guess-mime-type $1 $S3_DEFAULT_BUCKET
-}
-
-syncto() {
-  if [ -z "$1" ] || [ -z "$2" ] ; then
-    echo 'Usage: syncto <local-path> <ssh-alias>:<remote-path>'
-    return
-  fi
-
-  echo "Syncing $1 with $2..."
-  rg -l $1 | entr rsync -vuar $1 $2
 }
 
 kill-by-grep() {
