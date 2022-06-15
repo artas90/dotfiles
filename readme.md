@@ -3,8 +3,6 @@
 ### 1. clone repo
 ```sh
 git clone https://github.com/artas90/dotfiles.git ~/.dotfiles
-# OR
-git clone https://oauth2:__token__@gitlab.com/artas90/dotfiles.git ~/.dotfiles
 ```
 
 ### 2. copy configs
