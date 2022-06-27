@@ -6,16 +6,17 @@ cmd_main() {
   local to="$3"
 
   if _has_empty "$cmd" "$from" "$to" || ! _is_in "$cmd" "scp" "docker"; then
-    echo 'Usage: syncto scp|docker <local-path> <remote>:<root-path>'
+    echo 'Usage: syncto scp|docker <local-dir-1>:<local-dir-2>:... <remote>:<root-path>'
     echo
     return
   fi
 
-  ulimit -n 9999
+  ulimit -n 999999
+
+  from=`echo $from | tr ':' ' ' | sed -e 's/^[ \t]*//' -e 's/[ \t]*$//'`
 
   echo "Syncing \"$from\" to \"$to\" via \"$cmd\"..."
-  find "$from" -type f | entr -np echo /_ | $0 "_$cmd" "`pwd`" "$to"
-  # fd --full-path --type f "$from"
+  find $from -type f | entr -np echo /_ | $0 "_$cmd" "`pwd`" "$to"
 }
 
 cmd_subcmd() {
