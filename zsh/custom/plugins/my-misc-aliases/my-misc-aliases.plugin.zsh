@@ -13,6 +13,11 @@ alias grepc="GREP_COLOR='1;36' grep --color=always"
 alias y="yarn"
 alias yr="yarn run"
 
+_alvim() {
+  alacritty --title nvim --working-directory $(pwd) -e $SHELL -lc "nvim"
+}
+alias alvim="(_alvim &)"
+
 dfb-update() {
   for f in `ls $HOME/.dotfiles/bin | grep -v .gitignore | grep -v tmp`
   do
