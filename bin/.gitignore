@@ -1,4 +1,5 @@
 *
 !.gitignore
 !dfb-firefox-backup
+!dfb-git-add-token
 !syncto

@@ -1,0 +1,41 @@
+#!/bin/sh
+
+token=""
+get_token() {
+  local name="$1"
+
+  token=$(eval "echo \$$name")
+  if [ -n "$token" ]; then return 0; fi
+
+  echo "Please set $name variable"
+  return 1
+}
+
+update_url() {
+  local url="$1"
+  local token_name="$2"
+
+  if ! get_token "$token_name"; then return; fi
+
+  _set_url $(
+    echo $url | sed -e "s|$token@||" -e "s|https://|https://$token@|"
+  )
+}
+
+cmd_main() {
+  local url=`_get_url`
+  if _is_empty "$url";                 then echo "not a git repository"; fi
+  if _contains "$url" "github.com";    then update_url "$url" GH_TOKEN;  fi
+  if _contains "$url" "gitlab.com";    then update_url "$url" GL_TOKEN;  fi
+  if _contains "$url" "bitbucket.org"; then update_url "$url" BB_TOKEN;  fi
+}
+
+_is_empty() { test -z "$1"; return $?; }
+
+_contains() { echo "$1" | grep -q "$2"; return $?; }
+
+_get_url() { git remote get-url origin 2>/dev/null ; }
+
+_set_url() { git remote set-url origin $1 && _get_url ; }
+
+cmd_main

@@ -5,7 +5,7 @@ cmd_main() {
   local from="$2"
   local to="$3"
 
-  if _has_empty "$cmd" "$from" "$to" || ! _is_in "$cmd" "scp" "docker"; then
+  if _has_empty "$cmd" "$from" "$to" || ! _one_of "$cmd" "scp" "docker"; then
     echo 'Usage: syncto scp|docker <local-dir-1>:<local-dir-2>:... <remote>:<root-path>'
     echo
     return
@@ -72,7 +72,7 @@ _has_empty() {
   return 1
 }
 
-_is_in() {
+_one_of() {
   local x="$1"; shift
   for var in "$@"; do
     if [ "$var" = "$x" ]; then return 0; fi
@@ -80,7 +80,7 @@ _is_in() {
   return 1
 }
 
-if _is_in "$1" "_scp" "_docker"; then
+if _one_of "$1" "_scp" "_docker"; then
   cmd_subcmd $@
 else
   cmd_main $@

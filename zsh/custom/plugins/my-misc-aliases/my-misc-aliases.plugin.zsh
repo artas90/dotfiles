@@ -35,7 +35,18 @@ mo() {
 }
 
 s3put() {
-  s3cmd put --acl-public --guess-mime-type $1 $S3_DEFAULT_BUCKET
+  if [ -z "$S3_DEFAULT_BUCKET" ]; then
+    echo "Please set $S3_DEFAULT_BUCKET variable"
+    return
+  fi
+
+  local filename="$1"
+  if [ -z "$filename" ]; then
+    echo "Usage: s3put somefile.png"
+    return
+  fi
+
+  s3cmd put --acl-public --guess-mime-type $filename $S3_DEFAULT_BUCKET
 }
 
 kill-by-grep() {
