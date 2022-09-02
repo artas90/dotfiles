@@ -1,0 +1,8 @@
+{
+    "autosu": true,
+    "colorscheme": "darcula",
+    "rmtrailingws": true,
+    "savecursor": true,
+    "saveundo": true,
+    "scrollbar": true
+}
