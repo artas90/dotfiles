@@ -13,6 +13,8 @@ alias grepc="GREP_COLOR='1;36' grep --color=always"
 alias y="yarn"
 alias yr="yarn run"
 
+alias zshrc-custom-encrypt="cat ~/.zshrc_custom | age --encrypt --armor --passphrase"
+
 _alvim() {
   alacritty --title nvim --working-directory $(pwd) -e $SHELL -lc "nvim"
 }
