@@ -30,7 +30,7 @@ cmd_subcmd() {
   local first=""
   local filename=""
 
-  if [ "$cmd" != "_scp" ]; then _check_control_path; fi
+  if [ "$subcmd" = "_scp" ]; then _check_control_path; fi
 
   while read filename; do
     filename=`echo $filename | sed -e "s#^$thisdir/##g"`
@@ -43,11 +43,12 @@ cmd_subcmd() {
 
     echo
     echo "$cmd"
-    sh -c "$cmd"
+    eval "$cmd"
   done < /dev/stdin
 }
 
 _check_control_path() {
+  echo "_check_control_path"
   if [ -n "$SSH_CONTROL_PATH" ]; then
     export controlpath="-o ControlPath=$SSH_CONTROL_PATH"
     return
