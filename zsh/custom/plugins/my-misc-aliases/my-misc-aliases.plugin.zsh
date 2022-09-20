@@ -20,7 +20,15 @@ _alvim() {
 }
 alias alvim="(_alvim &)"
 
-dfb-update() {
+ps5() {
+  ps aux | sort -nrk 3,3 | head -n 5
+}
+
+mo() {
+  micro $(fzf --reverse --height 40%)
+}
+
+dfb-chmodx() {
   for f in `ls $HOME/.dotfiles/bin | grep -v .gitignore | grep -v tmp`
   do
     chmod +x "$HOME/.dotfiles/bin/$f"
@@ -28,12 +36,32 @@ dfb-update() {
   done
 }
 
-ps5() {
-  ps aux | sort -nrk 3,3 | head -n 5
-}
+dfb-var() {
+  local name="$1"
+  local ask="$2"
 
-mo() {
-  micro $(fzf --reverse --height 40%)
+  local fname="$HOME/.dotfiles/.vars/$name"
+  local val=""
+
+  if [ -e $fname ]; then
+    val=`cat $fname | xargs`
+  fi
+
+  if [ -z "$val" ] || [ "$ask" = "--ask" ]; then
+    local newval=""
+    read "newval?Please enter $name ($val): "
+    if [ -n "$newval" ]; then
+      val="$newval"
+      printf '%s' "$val" > $fname
+    fi
+  fi
+
+  if [ -z "$val" ]; then
+    dfb-var "$name"
+    return
+  fi
+
+  eval "export $name=\"$val\""
 }
 
 s3put() {
