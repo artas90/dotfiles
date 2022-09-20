@@ -44,9 +44,9 @@
 
 # -- delta pager config -- -- --
 
-#[core]
+[core]
 #    pager = delta
-#[interactive]
+[interactive]
 #    diffFilter = delta --color-only
 
 [merge]
