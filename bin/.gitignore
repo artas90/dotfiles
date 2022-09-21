@@ -2,5 +2,5 @@
 !.gitignore
 !dfb-firefox-backup
 !dfb-git-add-token
-!dfb-vscode-exclude
+!dfb-vscode-include
 !syncto

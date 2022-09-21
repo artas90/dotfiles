@@ -1,0 +1,43 @@
+#!/usr/bin/env -S deno run -A
+
+import {existsSync} from "https://deno.land/std/fs/mod.ts";
+
+function getFilesInclude() {
+  if (!existsSync(".vscode/files_include.json")) {
+    console.log("File '.vscode/files_include.json' not found")
+    return null;
+  }
+
+  const data = Deno.readTextFileSync(".vscode/files_include.json");
+  console.log(data)
+
+  return JSON.parse(data);
+}
+
+function main() {
+  const data = JSON.parse(Deno.readTextFileSync(".vscode/settings.json"));
+  let exclude = data['files.exclude'] ?? {}
+
+  const filesInclude = getFilesInclude();
+
+  // exclude if files_include is exists
+  const defaultExclude = !!filesInclude;
+
+  for (const dirEntry of Deno.readDirSync('.')) {
+    if (dirEntry.isDirectory && dirEntry.name !== '.vscode') {
+      const key = dirEntry.name + '/';
+      exclude[key] = defaultExclude;
+    }
+  }
+
+  exclude = {...exclude, ...filesInclude, ".vscode/": false};
+
+  const ordered = Object.keys(exclude).sort().reduce(
+    (obj, key) => (obj[key] = exclude[key], obj), {}
+  );
+  data['files.exclude'] = ordered;
+
+  Deno.writeTextFileSync(".vscode/settings.json", JSON.stringify(data, null, 2));
+}
+
+main()
