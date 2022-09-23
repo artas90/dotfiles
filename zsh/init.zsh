@@ -99,7 +99,7 @@ fi
 #   export MANPATH="$GNUMANPATH$MANPATH"
 # fi
 
-export PATH="$HOME/.dotfiles/bin:$PATH"
+export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # optional config
-[ -f ~/.zshrc_custom ] && source ~/.zshrc_custom
+[ -f ~/.dotfiles/zsh/_local.zsh ] && source ~/.dotfiles/zsh/_local.zsh

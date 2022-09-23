@@ -1,4 +1,5 @@
 #!/bin/sh
+# note: see fish version here - fish/misc/syncto.fish
 
 cmd_main() {
   local cmd="$1" # scp | docker

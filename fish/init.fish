@@ -1,5 +1,5 @@
 # init prompt
-starship init fish | source
+# starship init fish | source
 
 # update default settings and color scheme
 set fish_greeting
