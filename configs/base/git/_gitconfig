@@ -13,7 +13,7 @@
     defaultBranch = main
 
 [alias]
-  st = status
+  st = status --short
   co = checkout
   dev = checkout develop
   cm = commit
@@ -28,7 +28,9 @@
   branch-name = "! git symbolic-ref -q --short HEAD || echo -n ''"
   tag-name = "! git describe --tags --exact-match 2>/dev/null"
 
-  brfz = "! f() { git branch --format='%(refname:short)' | fzf; } ; f"
+
+  stfz = "! f() { git st | fzf --height 40% --border --layout=reverse | awk '{print $2}'; } ; f"
+  brfz = "! f() { git branch --format='%(refname:short)' | fzf --height 40% --border --layout=reverse; } ; f"
   cofz = "! f() { git checkout `git brfz`; } ; f"
   push-su = "! f() { git push --set-upstream origin `git branch-name`; } ; f"
 
