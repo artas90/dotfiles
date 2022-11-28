@@ -36,6 +36,14 @@ dfb-chmodx() {
   done
 }
 
+dfb-var-set() {
+  local name="$1"
+  local val="$2"
+
+  local fname="$HOME/.dotfiles/.vars/$name"
+  printf '%s' "$val" > "$fname"
+}
+
 dfb-var() {
   local name="$1"
   local ask="$2"
@@ -52,7 +60,7 @@ dfb-var() {
     read "newval?Please enter $name ($val): "
     if [ -n "$newval" ]; then
       val="$newval"
-      printf '%s' "$val" > $fname
+      dfb-var-set "$name" "%val"
     fi
   fi
 
