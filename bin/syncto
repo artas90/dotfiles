@@ -6,8 +6,8 @@ cmd_main() {
   local from="$2"
   local to="$3"
 
-  if _has_empty "$cmd" "$from" "$to" || ! _one_of "$cmd" "scp" "docker"; then
-    echo 'Usage: syncto scp|docker <local-dir-1>:<local-dir-2>:... <remote>:<root-path>'
+  if _has_empty "$cmd" "$from" "$to" || ! _one_of "$cmd" "scp" "docker" "kubectl"; then
+    echo 'Usage: syncto scp|docker|kubectl <local-dir-1>:<local-dir-2>:... <remote>:<root-path>'
     echo
     return
   fi
@@ -21,14 +21,13 @@ cmd_main() {
 }
 
 cmd_subcmd() {
-  local subcmd="$1" # _scp | _docker
+  local subcmd="$1" # _scp | _docker | _kubectl
   local thisdir="$2"
   local to="$3"
 
   if _has_empty "$subcmd" "$thisdir" "$to"; then return; fi
 
   local cmd=""
-  local first=""
   local filename=""
 
   if [ "$subcmd" = "_scp" ]; then _check_control_path; fi
@@ -40,6 +39,8 @@ cmd_subcmd() {
       cmd="scp $controlpath $filename $to/$filename"
     elif [ "$subcmd" = "_docker" ]; then
       cmd="docker cp $filename $to/$filename"
+    elif [ "$subcmd" = "_kubectl" ]; then
+      cmd="kubectl $SYNCTO_KUBECTL_PARAMS cp $filename $to/$filename"
     fi
 
     echo
@@ -82,7 +83,7 @@ _one_of() {
   return 1
 }
 
-if _one_of "$1" "_scp" "_docker"; then
+if _one_of "$1" "_scp" "_docker" "_kubectl"; then
   cmd_subcmd $@
 else
   cmd_main $@

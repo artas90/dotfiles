@@ -1,8 +1,8 @@
 #!/usr/bin/env fish
 
 function cmd_main -a cmd from to
-  if _has_empty "$cmd" "$from" "$to" or not _one_of "$cmd" "scp" "docker"
-    echo 'Usage: syncto scp|docker <local-dir-1>:<local-dir-2>:... <remote>:<root-path>'
+  if _has_empty "$cmd" "$from" "$to" or not _one_of "$cmd" "scp" "docker" "kubectl"
+    echo 'Usage: syncto scp|docker|kubectl <local-dir-1>:<local-dir-2>:... <remote>:<root-path>'
     echo
     return
   end
@@ -32,6 +32,8 @@ function cmd_subcmd -a subcmd thisdir to
       set cmd "scp $controlpath $filename $to/$filename"
     else if test "$subcmd" = "_docker"
       set cmd "docker cp $filename $to/$filename"
+    else if test "$subcmd" = "_kubectl"
+      set cmd "kubectl $SYNCTO_KUBECTL_PARAMS cp $filename $to/$filename"
     end
 
     echo 
@@ -72,7 +74,7 @@ function _one_of -a x
   return 1
 end
 
-if _one_of $argv[1] "_scp" "_docker" then
+if _one_of $argv[1] "_scp" "_docker" "_kubectl" then
   cmd_subcmd $argv
 else
   cmd_main $argv
