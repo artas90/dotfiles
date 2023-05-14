@@ -1,0 +1,39 @@
+theme = "bogster"
+
+[editor]
+true-color = true
+bufferline = "multiple"
+cursorline = true
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+C-s = ":write"
+C-q = ":quit"
+
+C-z = ["undo"]
+
+C-c = ["extend_line_below", "yank"]
+C-x = ["extend_line_below", "yank", "delete_selection"]
+C-v = ["paste_after"]
+
+C-p = ["buffer_picker"]
+C-d = ["extend_line_below", "yank", "paste_after"]
+
+C-l = { r = ":config-reload", o = ":config-open"}
+
+[keys.insert]
+C-s = ":write"
+C-q = ":quit"
+
+C-c = ["extend_line_below", "yank"]
+C-x = ["extend_line_below", "yank", "delete_selection"]
+C-v = ["paste_after"]
+
+C-p = ["buffer_picker"]
+C-d = ["normal_mode"]
+
