@@ -27,7 +27,7 @@ C-d = ["extend_line_below", "yank", "paste_after"]
 C-l = { r = ":config-reload", o = ":config-open"}
 
 [keys.insert]
-C-s = ":write"
+C-s = ["normal_mode", ":write", "insert_mode"]
 C-q = ":quit"
 
 C-c = ["extend_line_below", "yank"]
