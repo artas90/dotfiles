@@ -1,11 +1,17 @@
 #!/usr/bin/env -S deno run -A
 
-import {existsSync} from "https://deno.land/std/fs/mod.ts";
+import { existsSync } from "https://deno.land/std/fs/mod.ts";
+
+const excludeTemplate = {
+  "files.exclude": {}
+};
 
 function getFilesInclude() {
   if (!existsSync(".vscode/files_include.json")) {
-    console.log("File '.vscode/files_include.json' not found")
-    return null;
+    const out = JSON.stringify(excludeTemplate, null, 2)
+    Deno.writeTextFileSync(".vscode/files_include.json", out);
+    console.info("File '.vscode/files_include.json' created")
+    return excludeTemplate;
   }
 
   const data = Deno.readTextFileSync(".vscode/files_include.json");
@@ -15,6 +21,11 @@ function getFilesInclude() {
 }
 
 function main() {
+  if (!existsSync(".vscode", { isDirectory: true })) {
+    console.warn("Folder '.vscode' was not found")
+    return;
+  }
+
   const data = JSON.parse(Deno.readTextFileSync(".vscode/settings.json"));
   let exclude = data['files.exclude'] ?? {}
 
