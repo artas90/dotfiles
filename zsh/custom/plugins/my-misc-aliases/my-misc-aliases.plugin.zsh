@@ -106,7 +106,7 @@ if [[ $OSTYPE == linux-* ]]; then
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  osx_fix_menu_items() {
+  osx-fix-menu-items() {
     local lsframework="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework"
     local lsregister="$lsframework/Versions/A/Support/lsregister"
     sudo $lsregister -kill -r -domain local -domain system -domain user

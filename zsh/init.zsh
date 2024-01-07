@@ -69,7 +69,7 @@ fi
 
 _zsh_add_plugin "my-scm-branch"
 _zsh_add_plugin "my-misc-aliases"
-_zsh_add_plugin "my-nvm"
+_zsh_add_plugin "my-sdks"
 
 if [[ `whoami` == root ]] && [ ! -f /.dockerenv ]; then
   ZSH_THEME="my-zsh-theme-red"
