@@ -3,6 +3,7 @@ use ./nu_scripts/themes/tender.nu
 # use ./nu_scripts/completions *
 use ./nu_scripts/keybindings/fuzzy-history.nu
 use ./nu_scripts/keybindings/fuzzy-directory.nu
+source ./utils/dfb_var.nu
 
 let keybindings_cfg = $env.config.keybindings
   | append (fuzzy-history)
@@ -19,9 +20,14 @@ $env.config = ($env.config | merge {
   keybindings: $keybindings_cfg
 })
 
-# aliases
+# -- aliases -- -- --
+
 alias .. = cd ..
 alias la = ls --all
 alias ll = ls
 
 def lst [] { ls | get name | to text }
+
+# -- misc -- -- --
+
+$env.PATH = ($env.PATH | append "~/.dotfiles/bin")
