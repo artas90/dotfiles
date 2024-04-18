@@ -1,5 +1,12 @@
 # dotfiles
 
+### oneliner
+```sh
+curl https://artas90.github.io/dotfiles | sh
+```
+
+or manually
+
 ### 1. clone repo
 ```sh
 git clone https://github.com/artas90/dotfiles.git ~/.dotfiles
