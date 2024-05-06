@@ -61,7 +61,7 @@ dfb-var() {
     read "newval?Please enter $name ($val): "
     if [ -n "$newval" ]; then
       val="$newval"
-      dfb-var-set "$name" "%val"
+      dfb-var-set "$name" "$val"
     fi
   fi
 
