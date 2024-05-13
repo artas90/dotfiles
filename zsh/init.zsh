@@ -29,8 +29,10 @@ _zsh_init() {
 }
 
 _zsh_add_plugin() {
-  local repo_name="$1"
-  plugins+=($repo_name)
+  local repo_name=""
+  for repo_name in "$@"; do
+    plugins+=($repo_name)
+  done
 }
 
 _zsh_load_plugin() {
@@ -50,26 +52,21 @@ _zsh_load_plugin() {
 
 _zsh_init
 
-_zsh_add_plugin "python"
-_zsh_add_plugin "pip"
-_zsh_add_plugin "docker"
-_zsh_add_plugin "fzf"
-_zsh_add_plugin "sublime"
-_zsh_add_plugin "gitfast"
-_zsh_add_plugin "tig"
-_zsh_add_plugin "urltools"
+_zsh_add_plugin pyenv python pip poetry
+_zsh_add_plugin nvm node npm yarn ng
+_zsh_add_plugin docker podman rust
+_zsh_add_plugin fzf ripgrep fd zoxide
+_zsh_add_plugin ssh gitfast urltools qrcode
 
 #_zsh_load_plugin "chrissicool/zsh-256color"
 #_zsh_load_plugin "zsh-users/zsh-syntax-highlighting"
 
 if [[ $OSTYPE == darwin* ]]; then
   _zsh_add_plugin "brew"
-  _zsh_load_plugin "mgryszko/jvm"
+  # _zsh_load_plugin "mgryszko/jvm"
 fi
 
-_zsh_add_plugin "my-scm-branch"
-_zsh_add_plugin "my-misc-aliases"
-_zsh_add_plugin "my-sdks"
+_zsh_add_plugin my-scm-branch my-sdks my-zoxide my-misc-aliases
 
 if [[ `whoami` == root ]] && [ ! -f /.dockerenv ]; then
   ZSH_THEME="my-zsh-theme-red"

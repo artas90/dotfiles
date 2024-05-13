@@ -2,32 +2,32 @@
 
 # -- -- setup nvm -- -- -- --
 
-if [ "$(uname)" = "Darwin" ]; then
-  export NODE_PATH="/usr/local/lib/node_modules"
-  export NVM_DIR=~/.nvm
+# if [ "$(uname)" = "Darwin" ]; then
+#   export NODE_PATH="/usr/local/lib/node_modules"
+#   export NVM_DIR=~/.nvm
 
-  _nvmsh=$(brew --prefix nvm)/nvm.sh
-  [ -s "$_nvmsh" ] && \. "$_nvmsh"
+#   _nvmsh=$(brew --prefix nvm)/nvm.sh
+#   [ -s "$_nvmsh" ] && \. "$_nvmsh"
 
-else
-  # https://github.com/nvm-sh/nvm#installation-and-update
+# else
+#   # https://github.com/nvm-sh/nvm#installation-and-update
 
-  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] \
-    && printf %s "${HOME}/.nvm" \
-    || printf %s "${XDG_CONFIG_HOME}/nvm")"
+#   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] \
+#     && printf %s "${HOME}/.nvm" \
+#     || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-fi
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# fi
 
 # -- -- setup pyenv -- -- -- --
 
-if command -v pyenv &> /dev/null ; then
-  if [ -d "$PYENV_ROOT/bin" ]; then
-    export PATH="$PYENV_ROOT/bin:$PATH"
-  fi
+# if command -v pyenv &> /dev/null ; then
+#   if [ -d "$PYENV_ROOT/bin" ]; then
+#     export PATH="$PYENV_ROOT/bin:$PATH"
+#   fi
 
-  eval "$(pyenv init -)"
-fi
+#   eval "$(pyenv init -)"
+# fi
 
 # -- -- setup jdk -- -- -- --
 
