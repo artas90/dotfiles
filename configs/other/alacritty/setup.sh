@@ -1,6 +1,6 @@
 #!/bin/sh
 mkdir -p $HOME/.config/alacritty
 
-_yml_to="$HOME/.config/alacritty/alacritty.yml"
-cp -f "$(pwd)/alacritty.yml" $_yml_to
-echo "Copied to $_yml_to"
+_toml_to="$HOME/.config/alacritty/alacritty.toml"
+cp -f "$(pwd)/alacritty.toml" $_toml_to
+echo "Copied to $_toml_to"
