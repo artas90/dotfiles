@@ -2,53 +2,54 @@
 
 import { existsSync } from "https://deno.land/std/fs/mod.ts";
 
-const excludeTemplate = {
-  "files.exclude": {}
-};
+const excludeTemplate = {};
 
-function getFilesInclude() {
-  if (!existsSync(".vscode/files_include.json")) {
-    const out = JSON.stringify(excludeTemplate, null, 2)
-    Deno.writeTextFileSync(".vscode/files_include.json", out);
-    console.info("File '.vscode/files_include.json' created")
+function getFilesExclude() {
+  if (!existsSync(".vscode/files_exclude.json")) {
+    const out = JSON.stringify(excludeTemplate, null, 2);
+    Deno.writeTextFileSync(".vscode/files_exclude.json", out);
+    console.info("File '.vscode/files_exclude.json' created");
     return excludeTemplate;
   }
 
-  const data = Deno.readTextFileSync(".vscode/files_include.json");
-  console.log(data)
+  const data = Deno.readTextFileSync(".vscode/files_exclude.json");
+  console.log(data);
 
   return JSON.parse(data);
 }
 
 function main() {
   if (!existsSync(".vscode", { isDirectory: true })) {
-    console.warn("Folder '.vscode' was not found")
+    console.warn("Folder '.vscode' was not found");
     return;
   }
 
   const data = JSON.parse(Deno.readTextFileSync(".vscode/settings.json"));
-  let exclude = data['files.exclude'] ?? {}
+  let exclude = data["files.exclude"] ?? {};
 
-  const filesInclude = getFilesInclude();
+  const filesExclude = getFilesExclude();
 
-  // exclude if files_include is exists
-  const defaultExclude = !!filesInclude;
+  // exclude if files_exclude is exists
+  const defaultExclude = !!filesExclude;
 
-  for (const dirEntry of Deno.readDirSync('.')) {
-    if (dirEntry.isDirectory && dirEntry.name !== '.vscode') {
-      const key = dirEntry.name + '/';
+  for (const dirEntry of Deno.readDirSync(".")) {
+    if (dirEntry.isDirectory && dirEntry.name !== ".vscode") {
+      const key = dirEntry.name + "/";
       exclude[key] = defaultExclude;
     }
   }
 
-  exclude = {...exclude, ...filesInclude, ".vscode/": false};
+  exclude = { ...exclude, ...filesExclude, ".vscode/": false };
 
-  const ordered = Object.keys(exclude).sort().reduce(
-    (obj, key) => (obj[key] = exclude[key], obj), {}
+  const ordered = Object.keys(exclude)
+    .sort()
+    .reduce((obj, key) => ((obj[key] = exclude[key]), obj), {});
+  data["files.exclude"] = ordered;
+
+  Deno.writeTextFileSync(
+    ".vscode/settings.json",
+    JSON.stringify(data, null, 2),
   );
-  data['files.exclude'] = ordered;
-
-  Deno.writeTextFileSync(".vscode/settings.json", JSON.stringify(data, null, 2));
 }
 
-main()
+main();

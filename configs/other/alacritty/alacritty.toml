@@ -4,26 +4,26 @@ size = 18.0
 [font.normal]
 family = "Cascadia Code NF"
 
-# [colors.normal]
-# black = "0x000000"
-# blue = "0x0000ee"
-# cyan = "0x00cdcd"
-# green = "0x00cd00"
-# magenta = "0xcd00cd"
-# red = "0xcd0000"
-# white = "0xe5e5e5"
-# yellow = "0xcdcd00"
+[colors.normal]
+black = "0x010000"
+blue = "0x032cbf"
+cyan = "0x58c3c6"
+green = "0x59bd38"
+magenta = "0xba43c1"
+red = "0xb9301c"
+white = "0xe5e5e5"
+yellow = "0xc7c43f"
 
-# [colors.bright]
-# black = "0x7f7f7f"
-# blue = "0x5c5cff"
-# cyan = "0x00ffff"
-# green = "0x00ff00"
-# magenta = "0xff00ff"
-# red = "0xff0000"
-# white = "0xffffff"
-# yellow = "0xffff00"
+[colors.bright]
+black = "0x696868"
+blue = "0x6875f6"
+cyan = "0x8efbfd"
+green = "0x8df579"
+magenta = "0xed81f8"
+red = "0xed766d"
+white = "0xffffff"
+yellow = "0xfffb7f"
 
-# [colors.primary]
-# background = "0x000000"
-# foreground = "0xffffff"
+[colors.primary]
+background = "0x000000"
+foreground = "0xffffff"

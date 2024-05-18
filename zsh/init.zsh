@@ -6,6 +6,11 @@ setopt   HIST_IGNORE_ALL_DUPS  # Ignore all occurrences of commands
 setopt   HIST_IGNORE_SPACE     # Ignore extra spaces
 setopt   HIST_REDUCE_BLANKS    # Remove blank lines from history
 
+# ---- external configs ----
+
+export ZSH_PYENV_QUIET=true
+export DENO_FUTURE=1
+
 # ---- my configs ----
 
 S3_DEFAULT_BUCKET="s3://..."
@@ -66,7 +71,7 @@ if [[ $OSTYPE == darwin* ]]; then
   # _zsh_load_plugin "mgryszko/jvm"
 fi
 
-_zsh_add_plugin my-scm-branch my-sdks my-zoxide my-misc-aliases
+_zsh_add_plugin my-zoxide my-scm-branch my-sdks my-misc-aliases
 
 if [[ `whoami` == root ]] && [ ! -f /.dockerenv ]; then
   ZSH_THEME="my-zsh-theme-red"
@@ -96,7 +101,7 @@ fi
 #   export MANPATH="$GNUMANPATH$MANPATH"
 # fi
 
-export PATH="$PATH:$HOME/.dotfiles/bin"
+export PATH="$PATH:$HOME/.dotfiles/bin:$HOME/.deno/bin"
 
 # optional config
 [ -f ~/.dotfiles/zsh/_local.zsh ] && source ~/.dotfiles/zsh/_local.zsh
