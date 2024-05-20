@@ -1,0 +1,42 @@
+#!/bin/sh
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "error: repo is not clean"
+  exit 1
+fi
+
+_msgclean="$(git log -1 --pretty=%B | sed 's/ \[generated\]//g ; s/ \[notgenerated\]//g')"
+
+_notgenerated="$(git log -1 --pretty=%B | grep ' \[notgenerated\]')"
+if [ -n "$_notgenerated" ]; then
+  echo "* reset notgenerated commit *"
+  git reset --quiet HEAD~1
+fi
+
+_generated="$(git log -1 --pretty=%B | grep ' \[generated\]')"
+if [ -n "$_notgenerated" ] && [ -z "$_generated" ]; then
+  echo "error: expected generated commit before notgenerated one"
+  exit 1
+fi
+
+echo "* reset last commit *"
+git reset --quiet HEAD~1
+
+echo "* add generated files *"
+for f in $(git status --short --untracked | cut -c 4- | xargs); do
+  if [ -n "$(grep -E 'DO NOT EDIT|@generated' $f)" ]; then
+    echo "  - $f"
+    git add $f 1>/dev/null
+  fi
+done
+
+git commit --quiet --message "$_msgclean [generated]"
+
+echo "* add last files *"
+for f in $(git status --short --untracked | cut -c 4- | xargs); do
+  echo "  - $f"
+done
+
+git add --all
+
+git commit --quiet --message "$_msgclean [notgenerated]"
