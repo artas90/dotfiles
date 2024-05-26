@@ -60,7 +60,7 @@ _zsh_init
 _zsh_add_plugin pyenv python pip poetry
 _zsh_add_plugin nvm node npm yarn ng
 _zsh_add_plugin docker podman rust
-_zsh_add_plugin fzf ripgrep fd zoxide
+_zsh_add_plugin fzf ripgrep fd
 _zsh_add_plugin ssh gitfast urltools qrcode
 
 #_zsh_load_plugin "chrissicool/zsh-256color"
