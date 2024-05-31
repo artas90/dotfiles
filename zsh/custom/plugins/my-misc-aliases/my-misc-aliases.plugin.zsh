@@ -12,7 +12,7 @@ alias grepc="GREP_COLOR='1;36' grep --color=always"
 
 alias zshrc-custom-encrypt="cat ~/.dotfiles/zsh/_local.zsh | age --encrypt --armor --passphrase"
 alias syncto="dfb-syncto"
-
+alias podps="podman ps --format 'table {{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}'"
 alias y="yazi"
 
 _alvim() {
