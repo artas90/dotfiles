@@ -5,5 +5,6 @@ _setup micro
 _setup git
 _setup mc
 _setup tmux
+_setup yazi
 
 unset _setup
