@@ -40,6 +40,11 @@ dfb-var-set() {
   local name="$1"
   local val="$2"
 
+  if [ -z "$name" ] || [ -z "$val" ]; then
+    echo 'Usage: dfb-var-set name value'
+    return
+  fi
+
   local fname="$HOME/.dotfiles/.vars/$name"
   printf '%s' "$val" > "$fname"
 }
