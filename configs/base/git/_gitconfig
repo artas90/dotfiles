@@ -15,6 +15,7 @@
 [alias]
   st = status --short
   co = checkout
+  mas = checkout master
   dev = checkout develop
   cm = commit
   br = branch
