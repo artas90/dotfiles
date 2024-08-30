@@ -51,7 +51,7 @@ dfb-var-set() {
 
 dfb-var() {
   local name="$1"
-  local ask="$2"
+  local askorsilent="$2"
 
   local fname="$HOME/.dotfiles/.vars/$name"
   local val=""
@@ -60,7 +60,12 @@ dfb-var() {
     val=`cat $fname | xargs`
   fi
 
-  if [ -z "$val" ] || [ "$ask" = "--ask" ]; then
+  if [ -n "$val" ] || [ "$askorsilent" = "--silent" ]; then
+    eval "export $name=\"$val\""
+    return
+  fi
+
+  if [ -z "$val" ] || [ "$askorsilent" = "--ask" ]; then
     local newval=""
     read "newval?Please enter $name ($val): "
     if [ -n "$newval" ]; then
@@ -73,8 +78,6 @@ dfb-var() {
     dfb-var "$name"
     return
   fi
-
-  eval "export $name=\"$val\""
 }
 
 s3put() {
