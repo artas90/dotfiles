@@ -1,6 +1,6 @@
 #!/usr/bin/env -S deno run -A
 
-import { existsSync } from "https://deno.land/std/fs/mod.ts";
+import { existsSync } from "jsr:@std/fs";
 
 const excludeTemplate = {};
 
