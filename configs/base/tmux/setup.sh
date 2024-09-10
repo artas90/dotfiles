@@ -8,9 +8,9 @@ function version {
 tmux_ver=`tmux -V | cut -d ' ' -f 2-`
 
 if [ $(version $tmux_ver) -ge $(version "2.9") ]; then
-  from="_tmux-ge-29.conf"
+  from="_tmux-ge-29.tmux"
 else
-  from="_tmux-lt-29.conf"  
+  from="_tmux-lt-29.tmux"
 fi
 
 to="$HOME/.tmux.conf"
