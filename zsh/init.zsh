@@ -53,6 +53,14 @@ _zsh_load_plugin() {
   _zsh_add_plugin "$repo_name"
 }
 
+# ---- core utils ----
+
+pathadd() {
+  if [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="$1${PATH:+":$PATH"}"
+  fi
+}
+
 # ---- init oh-my-zsh ----
 
 _zsh_init
@@ -100,7 +108,8 @@ fi
 #   export MANPATH="$GNUMANPATH$MANPATH"
 # fi
 
-export PATH="$PATH:$HOME/.dotfiles/bin:$HOME/.deno/bin"
+pathadd "$HOME/.dotfiles/bin"
+pathadd "$HOME/.deno/bin"
 
 # optional config
 [ -f ~/.dotfiles/zsh/_local.zsh ] && source ~/.dotfiles/zsh/_local.zsh
