@@ -1,0 +1,19 @@
+[
+  {
+    "bindings": {
+      "cmd-t": "workspace::NewCenterTerminal"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-d": "editor::DuplicateLineDown"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-r": "search::ToggleReplace"
+    }
+  }
+]
