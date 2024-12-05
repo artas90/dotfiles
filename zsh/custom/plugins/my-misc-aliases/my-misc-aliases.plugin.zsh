@@ -119,3 +119,9 @@ if [[ $OSTYPE == darwin* ]]; then
     sudo $lsregister -kill -r -domain local -domain system -domain user
   }
 fi
+
+# list all zsh autocompletions
+# for command in ${(k)_comps}; do
+#   completions=${_comps[$command]}
+#   printf "%-32s %s\n" $command $completions
+# done | sort

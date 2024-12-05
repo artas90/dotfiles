@@ -63,7 +63,8 @@
   },
   "terminal": {
     "toolbar": {
-      "title": false
+      "title": false,
+      "breadcrumbs": false
     }
   },
   "git": {

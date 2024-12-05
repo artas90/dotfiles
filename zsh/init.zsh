@@ -88,6 +88,14 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+# ---- use carapace for autocompletions ----
+
+if command -v carapace &> /dev/null ; then
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+  source <(carapace _carapace)
+fi
+
 # ---- general config ----
 
 export LC_ALL=en_US.UTF-8
