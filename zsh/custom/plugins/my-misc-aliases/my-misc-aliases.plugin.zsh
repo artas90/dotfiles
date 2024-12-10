@@ -114,8 +114,9 @@ fi
 
 if [[ $OSTYPE == darwin* ]]; then
   osx-fix-menu-items() {
-    local lsframework="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework"
-    local lsregister="$lsframework/Versions/A/Support/lsregister"
+    local CoreServices="/System/Library/Frameworks/CoreServices.framework"
+    local LaunchServices="${CoreServices}/Versions/A/Frameworks/LaunchServices.framework"
+    local lsregister="${LaunchServices}/Versions/A/Support/lsregister"
     sudo $lsregister -kill -r -domain local -domain system -domain user
   }
 fi

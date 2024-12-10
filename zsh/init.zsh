@@ -88,12 +88,18 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-# ---- use carapace for autocompletions ----
+# ---- misc helpers ----
 
-if command -v carapace &> /dev/null ; then
+# use carapace for autocompletions
+if command -v carapace &> /dev/null; then
   export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
   zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
   source <(carapace _carapace)
+fi
+
+# a smarter cd command
+if command -v zoxide &>/dev/null; then
+  source <(zoxide init zsh)
 fi
 
 # ---- general config ----
