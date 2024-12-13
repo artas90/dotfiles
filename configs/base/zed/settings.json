@@ -62,6 +62,7 @@
     "quick_actions": false
   },
   "terminal": {
+    "detect_venv": "off",
     "toolbar": {
       "title": false,
       "breadcrumbs": false
