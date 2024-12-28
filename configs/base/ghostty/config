@@ -1,0 +1,13 @@
+theme = "PaulMillr"
+palette = 2=#e62e2e
+palette = 2=#78e60f
+palette = 3=#f2ca00
+background = #101010
+
+cursor-style = "bar"
+cursor-color = #ffffff
+
+font-family = "Cascadia Code NF"
+font-size = 18
+
+quit-after-last-window-closed = true

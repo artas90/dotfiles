@@ -8,5 +8,6 @@ _setup mc
 _setup tmux
 _setup yazi
 _setup zed
+_setup ghostty
 
 unset _setup

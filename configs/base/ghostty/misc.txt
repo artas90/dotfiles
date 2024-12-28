@@ -1,0 +1,16 @@
+# change colors
+
+# red
+ghostty +show-config | grep ' 1='
+#ff0000 => hsv(0°, 100%, 100%)
+        => hsv(0°,  80%,  90%) => #e62e2e
+
+# green
+ghostty +show-config | grep ' 2='
+#79ff0f => hsv(94°, 94%, 100%)
+        => hsv(94°, 94%,  90%) => #6ce60e
+
+# yellow
+ghostty +show-config | grep ' 3='
+#e7bf00 => hsv(50°, 100%, 91%)
+        => hsv(50°, 100%, 95%) => #f2ca00
