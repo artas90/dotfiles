@@ -2,4 +2,7 @@
 /.vscode
 
 .DS_Store
+
+/zsh/.zprezto
+/zsh/.zsh_history
 /zsh/_local.zsh

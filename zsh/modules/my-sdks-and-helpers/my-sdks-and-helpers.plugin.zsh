@@ -39,3 +39,18 @@ _jbr="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 if  [ -z "$JAVA_HOME" ] && [ -d "$_jbr" ] ; then
   export JAVA_HOME="$_jbr"
 fi
+
+# -- -- carapace for autocompletions -- -- -- --
+
+if command -v carapace &> /dev/null; then
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+  source <(carapace _carapace)
+fi
+
+# -- -- smarter cd command -- -- -- --
+
+if command -v zoxide &>/dev/null; then
+  export _ZO_DATA_DIR="$HOME/.local/share"
+  source <(zoxide init zsh)
+fi

@@ -15,17 +15,18 @@ alias syncto="dfb-syncto"
 alias podps="podman ps --format 'table {{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}'"
 alias y="yazi"
 
-_alvim() {
-  alacritty --title nvim --working-directory $(pwd) -e $SHELL -lc "nvim"
-}
-alias alvim="(_alvim &)"
-
 ps5() {
   ps aux | sort -nrk 3,3 | head -n 5
 }
 
 mo() {
   micro $(fzf --reverse --height 40%)
+}
+
+pathadd() {
+  if [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="$1${PATH:+":$PATH"}"
+  fi
 }
 
 dfb-chmodx() {
@@ -120,6 +121,11 @@ if [[ $OSTYPE == darwin* ]]; then
     sudo $lsregister -kill -r -domain local -domain system -domain user
   }
 fi
+
+# _alvim() {
+#   alacritty --title nvim --working-directory $(pwd) -e $SHELL -lc "nvim"
+# }
+# alias alvim="(_alvim &)"
 
 # list all zsh autocompletions
 # for command in ${(k)_comps}; do

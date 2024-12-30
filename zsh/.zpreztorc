@@ -1,0 +1,38 @@
+source "${ZDOTDIR}/.zprezto/runcoms/zpreztorc"
+
+zstyle ':prezto:module:history' histfile "${HOME}/.zsh_history"
+
+if [[ `whoami` == root ]] && [ ! -f /.dockerenv ]; then
+  zstyle ':prezto:module:prompt' theme 'mytheme_red'
+else
+  zstyle ':prezto:module:prompt' theme 'mytheme_yellow'
+fi
+
+# Override .zprezto/runcoms/zpreztorc, the order matters
+_preztomodules=(
+  # default modules
+  'environment' # general options and env variables
+  'terminal'    # sets terminal window and tab titles
+  'editor'      # editor specific key bindings options and variables
+  'history'     # history options and aliases
+  'directory'   # directory options and aliases
+  'spectrum'    # easify use of 256 colors
+  'utility'     # general aliases like ll, pbcopy etc...
+
+  # additional modules with completion
+  'archive'     # create, list, and extract archives
+  'osx'         # macOS aliases and functions  
+
+  # default modules
+  'completion'                # Loads and configures TAB completion
+  #  'syntax-highlighting'    # Fish shell's syntax highlighting
+  'history-substring-search'  # Fish shell's history search feature
+  # 'autosuggestions'         # Fish shell's autosuggestions feature
+  'prompt'                    # loads prompt themes
+
+  # my modules
+  'my-sdks-and-helpers'
+  'my-misc-aliases'
+  'my-scm-branch'
+)
+zstyle ':prezto:load' pmodule $_preztomodules
