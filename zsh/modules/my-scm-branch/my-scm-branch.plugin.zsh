@@ -1,9 +1,29 @@
+# -- git -- -- --
+
+_parse_git_branch () {
+  git symbolic-ref -q --short HEAD 2>/dev/null
+}
+
+_parse_git_tag () {
+  git describe --tags --exact-match 2>/dev/null
+}
+
+_parse_git_commit () {
+  PAGER= git log -1 --format='%h' 2>/dev/null
+}
+
 _parse_git_dirty() {
   if [ -z "$(git status -s)" ]; then
     echo "%F{green}✓%F{reset_color}"
   else
     echo "%F{yellow}⚡%F{reset_color}"
   fi
+}
+
+# -- hg -- -- --
+
+_parse_hg_branch () {
+  hg branch 2>/dev/null
 }
 
 _parse_hg_dirty() {
@@ -14,25 +34,18 @@ _parse_hg_dirty() {
   fi
 }
 
-_parse_git_branch () {
-  git symbolic-ref -q --short HEAD 2>/dev/null
-}
-_parse_git_tag () {
-  git describe --tags --exact-match 2>/dev/null
-}
-_parse_git_commit () {
-  PAGER= git log -1 --format='%h' 2>/dev/null
-}
+# -- git_or_hg -- -- --
 
-git_or_hg_branch () {
+_git_or_hg_branch () {
   local git_branch=`_parse_git_branch || _parse_git_tag || _parse_git_commit`
-  local hg_branch=`hg branch 2>/dev/null`
-
   if [ ! $git_branch = "" ]; then
     echo "±:$git_branch:"`_parse_git_dirty` && return
-  elif [ ! $hg_branch = "" ]; then
-    echo "☿:$hg_branch:"`_parse_hg_dirty` && return
-  else
-    echo "○" && return
   fi
+
+  local hg_branch=`_parse_hg_branch`
+  if [ ! $hg_branch = "" ]; then
+    echo "☿:$hg_branch:"`_parse_hg_dirty` && return
+  fi
+
+  echo "○" && return
 }
