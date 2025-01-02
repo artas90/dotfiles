@@ -1,16 +1,16 @@
 [push]
   default = simple
 
-# [user]
-#   name = User Name
-#   email = email@example.com
+[user]
+  name = "__NAME__"
+  email = "__EMAIL__"
 
 [core]
-	autocrlf = false
-	eol = lf
+  autocrlf = false
+  eol = lf
 
 [init]
-    defaultBranch = main
+  defaultBranch = main
 
 [alias]
   st = status --short
@@ -21,7 +21,8 @@
   br = branch
   chp = cherry-pick
   sbup = submodule update --init --recursive
-  amd = commit -a --amend
+  amd = commit --amend
+  amda = commit --amend -a
 
   diffc = diff --cached
   diffh = diff HEAD
@@ -29,6 +30,8 @@
   branch-name = "! git symbolic-ref -q --short HEAD || echo -n ''"
   tag-name = "! git describe --tags --exact-match 2>/dev/null"
 
+  rbmas = rebase master
+  rbdev = rebase develop
 
   stfz = "! f() { git st | fzf --height 40% --border --layout=reverse | awk '{print $2}'; } ; f"
   brfz = "! f() { git branch --format='%(refname:short)' | fzf --height 40% --border --layout=reverse; } ; f"
@@ -49,23 +52,23 @@
 # -- delta pager config -- -- --
 
 [core]
-#    pager = delta
+#  pager = delta
 [interactive]
-#    diffFilter = delta --color-only
+#  diffFilter = delta --color-only
 
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 [diff]
-    colorMoved = default
+  colorMoved = default
 [delta]
-    file-style = bold cyan ul
-    file-decoration-style = none
-    hunk-header-style = omit
-    line-numbers = true
-    line-numbers-minus-style = "red"
-    line-numbers-zero-style = "gray"
-    line-numbers-plus-style = "green"
-    line-numbers-left-format ="{nm:>4}│"
-    line-numbers-right-format ="{np:>4}│ "
-    line-numbers-left-style = gray
-    line-numbers-right-style = cyan
+  file-style = bold cyan ul
+  file-decoration-style = none
+  hunk-header-style = omit
+  line-numbers = true
+  line-numbers-minus-style = "red"
+  line-numbers-zero-style = "gray"
+  line-numbers-plus-style = "green"
+  line-numbers-left-format ="{nm:>4}│"
+  line-numbers-right-format ="{np:>4}│ "
+  line-numbers-left-style = gray
+  line-numbers-right-style = cyan
