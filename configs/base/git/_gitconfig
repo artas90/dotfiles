@@ -18,11 +18,12 @@
   mas = checkout master
   dev = checkout develop
   cm = commit
+  cma = commit -a
   br = branch
   chp = cherry-pick
   sbup = submodule update --init --recursive
   amd = commit --amend
-  amda = commit --amend -a
+  ama = commit --amend -a
 
   diffc = diff --cached
   diffh = diff HEAD
@@ -48,6 +49,7 @@
   last-commit = "! echo `git log -1 --pretty='%H'`"
   last-files = "! f() { git log ${1-'-1'} --name-only --pretty='format:' | sort | uniq | sed -e '/^$/d' ;} ; f"
 
+  tui = "! gitui --watcher"
 
 # -- delta pager config -- -- --
 

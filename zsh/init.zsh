@@ -13,3 +13,4 @@ zstyle ':prezto:load' pmodule-dirs "${ZDOTDIR}/modules"
 )
 
 source "${ZDOTDIR}/.zprezto/init.zsh"
+_DOTFILES_ZSH_INITED="1"
