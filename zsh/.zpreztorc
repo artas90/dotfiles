@@ -1,7 +1,5 @@
 source "${ZDOTDIR}/.zprezto/runcoms/zpreztorc"
 
-zstyle ':prezto:module:history' histfile "${HOME}/.zsh_history"
-
 if [ `whoami` = root ] && [ ! -f /.dockerenv ]; then
   zstyle ':prezto:module:prompt' theme 'mytheme_red'
 else
@@ -21,11 +19,11 @@ _preztomodules=(
 
   # additional modules with completion
   'archive'     # create, list, and extract archives
-  'osx'         # macOS aliases and functions  
+  'osx'         # macOS aliases and functions
 
   # default modules
   'completion'                # Loads and configures TAB completion
-  #  'syntax-highlighting'    # Fish shell's syntax highlighting
+  # 'syntax-highlighting'    # Fish shell's syntax highlighting
   'history-substring-search'  # Fish shell's history search feature
   # 'autosuggestions'         # Fish shell's autosuggestions feature
   'prompt'                    # loads prompt themes
@@ -37,3 +35,5 @@ _preztomodules=(
   'my-sdks-and-helpers'
 )
 zstyle ':prezto:load' pmodule $_preztomodules
+
+zstyle ':prezto:module:history' histfile "${HOME}/.zsh_history"
