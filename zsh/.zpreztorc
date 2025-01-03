@@ -2,7 +2,7 @@ source "${ZDOTDIR}/.zprezto/runcoms/zpreztorc"
 
 zstyle ':prezto:module:history' histfile "${HOME}/.zsh_history"
 
-if [[ `whoami` == root ]] && [ ! -f /.dockerenv ]; then
+if [ `whoami` = root ] && [ ! -f /.dockerenv ]; then
   zstyle ':prezto:module:prompt' theme 'mytheme_red'
 else
   zstyle ':prezto:module:prompt' theme 'mytheme_yellow'
@@ -31,8 +31,9 @@ _preztomodules=(
   'prompt'                    # loads prompt themes
 
   # my modules
-  'my-sdks-and-helpers'
-  'my-misc-aliases'
   'my-scm-branch'
+  'my-misc-aliases'
+  'my-base-config'
+  'my-sdks-and-helpers'
 )
 zstyle ':prezto:load' pmodule $_preztomodules

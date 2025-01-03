@@ -29,6 +29,17 @@ pathadd() {
   fi
 }
 
+# similar to utils in .zprezto/modules/helper/init.zsh
+function is-vscode {
+  [[ "$TERM_PROGRAM" == vscode ]]
+}
+function is-zed {
+  [[ "$TERM_PROGRAM" == zed ]]
+}
+function is-msys {
+  [[ "$OSTYPE" == msys* ]]
+}
+
 dfb-chmodx() {
   for f in `ls $HOME/.dotfiles/bin | grep -v .gitignore | grep -v tmp`
   do
@@ -107,13 +118,13 @@ kill-by-grep() {
   ps aux | grep "$process_name" | grep -v grep | awk '{print $2}' | xargs kill -9
 }
 
-if [[ $OSTYPE == linux-* ]]; then
+if is-linux; then
   open() {
     (xdg-open "$1" &> /dev/null &)
   }
 fi
 
-if [[ $OSTYPE == darwin* ]]; then
+if is-darwin; then
   osx-fix-menu-items() {
     local CoreServices="/System/Library/Frameworks/CoreServices.framework"
     local LaunchServices="${CoreServices}/Versions/A/Frameworks/LaunchServices.framework"
