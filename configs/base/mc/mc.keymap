@@ -1,0 +1,21 @@
+# https://github.com/MidnightCommander/mc/blob/master/misc/mc.default.keymap
+
+[filemanager]
+Menu = ctrl-w
+UserMenu = ctrl-u
+View = ctrl-l
+Edit = ctrl-e
+Copy = ctrl-c
+Move = ctrl-r
+MakeDir = ctrl-k
+Delete = ctrl-d
+Quit = ctrl-q
+Find = ctrl-f
+
+[viewer]
+Quit = ctrl-q
+Search = ctrl-f
+
+[diffviewer]
+Quit = ctrl-q
+Search = ctrl-f

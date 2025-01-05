@@ -14,6 +14,7 @@ alias zshrc-custom-encrypt="cat ~/.dotfiles/zsh/_local.zsh | age --encrypt --arm
 alias syncto="dfb-syncto"
 alias podps="podman ps --format 'table {{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}'"
 alias y="yazi"
+alias mc="command mc --nosubshell"
 
 ps5() {
   ps aux | sort -nrk 3,3 | head -n 5

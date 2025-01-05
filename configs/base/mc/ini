@@ -1,0 +1,10 @@
+[Midnight-Commander]
+skin=yadt256-defbg
+use_internal_view=true
+use_internal_edit=false
+
+[Layout]
+message_visible=false
+keybar_visible=false
+command_prompt=false
+menubar_visible=true

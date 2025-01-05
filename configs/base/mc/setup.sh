@@ -1,10 +1,18 @@
 #!/bin/sh
-mkdir -p "$HOME/.local/share/mc/skins"
+mkdir -p "$HOME/.config/mc" "$HOME/.local/share/mc/skins"
 
-to="$HOME/.local/share/mc/skins/darkened.ini"
-cp -f "$(pwd)/skins/darkened.ini" $to
-echo "Created $to"
+cpcofg() {
+  local to="$HOME/.config/mc/$1"
+  cp -f "$(pwd)/$1" $to
+  echo "Created $to"
+}
+cpskin() {
+  local to="$HOME/.local/share/mc/$1"
+  cp -f "$(pwd)/$1" $to
+  echo "Created $to"
+}
 
-to="$HOME/.local/share/mc/skins/zenburn.ini"
-cp -f "$(pwd)/skins/zenburn.ini" $to
-echo "Created $to"
+cpcofg "ini"
+cpcofg "mc.keymap"
+cpskin "skins/darkened.ini"
+cpskin "skins/zenburn.ini"
