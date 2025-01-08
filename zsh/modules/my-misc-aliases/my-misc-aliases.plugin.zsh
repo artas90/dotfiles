@@ -11,10 +11,27 @@ alias grepm="GREP_COLOR='1;35' grep --color=always"
 alias grepc="GREP_COLOR='1;36' grep --color=always"
 
 alias zshrc-custom-encrypt="cat ~/.dotfiles/zsh/_local.zsh | age --encrypt --armor --passphrase"
-alias syncto="dfb-syncto"
 alias podps="podman ps --format 'table {{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}'"
-alias y="yazi"
 alias mc="command mc --nosubshell"
+alias syncto="dfb-syncto"
+alias y="yazi"
+
+podman-machine-update() {
+  echo "using quay.io/podman/machine-os:$1"
+  podman machine os apply "quay.io/podman/machine-os:$1"
+}
+
+str-lower() {
+  awk '{print tolower($0)}'
+}
+
+str-upper() {
+  awk '{print toupper($0)}'
+}
+
+str-trim() {
+  sed -r 's/^ *//; s/ *$//'
+}
 
 ps5() {
   ps aux | sort -nrk 3,3 | head -n 5

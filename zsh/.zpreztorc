@@ -23,7 +23,7 @@ _preztomodules=(
 
   # default modules
   'completion'                # Loads and configures TAB completion
-  # 'syntax-highlighting'    # Fish shell's syntax highlighting
+  'syntax-highlighting'    # Fish shell's syntax highlighting
   'history-substring-search'  # Fish shell's history search feature
   # 'autosuggestions'         # Fish shell's autosuggestions feature
   'prompt'                    # loads prompt themes
