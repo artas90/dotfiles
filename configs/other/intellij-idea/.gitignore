@@ -1,0 +1,26 @@
+# Ignore everything
+*
+
+# But not these files...
+!/.gitignore
+!/readme.md
+!/screenshot.jpg
+!/export-settings.sh
+!/setup.sh
+!/UNLICENSE
+
+!/settings/IntelliJ IDEA Global Settings
+!/settings/keymaps/SublimeText_macOS_My.xml
+!/settings/options/colors.scheme.xml
+!/settings/options/editor-font.xml
+!/settings/options/editor.xml
+!/settings/options/ide-features-trainer.xml
+!/settings/options/ide.general.xml
+!/settings/options/keymapFlags.xml
+!/settings/options/mac/keymap.xml
+!/settings/options/settingsSync.xml
+!/settings/options/ui.lnf.xml
+!/settings/options/window.layouts.xml
+
+# ...even if they are in subdirectories
+!*/
