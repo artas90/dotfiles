@@ -4,7 +4,8 @@
 # General options
 
 # Default termtype. If the rcfile sets $TERM, that overrides this value.
-set -g default-terminal screen-256color
+# set -g default-terminal xterm-256color
+# set -g default-terminal xterm-ghostty
 
 # be quiet
 set-option -g visual-activity off

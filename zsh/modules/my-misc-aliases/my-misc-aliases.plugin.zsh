@@ -10,7 +10,6 @@ alias grepb="GREP_COLOR='1;34' grep --color=always"
 alias grepm="GREP_COLOR='1;35' grep --color=always"
 alias grepc="GREP_COLOR='1;36' grep --color=always"
 
-alias zshrc-custom-encrypt="cat ~/.dotfiles/zsh/_local.zsh | age --encrypt --armor --passphrase"
 alias podps="podman ps --format 'table {{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}'"
 alias mc="command mc --nosubshell"
 alias syncto="dfb-syncto"
