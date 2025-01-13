@@ -21,13 +21,13 @@
 
 # -- -- setup pyenv -- -- -- --
 
-# if command -v pyenv &> /dev/null ; then
-#   if [ -d "$PYENV_ROOT/bin" ]; then
-#     export PATH="$PYENV_ROOT/bin:$PATH"
-#   fi
+if command-exists pyenv; then
+  if [ -d "$PYENV_ROOT/bin" ]; then
+    path-prepend "$PYENV_ROOT/bin"
+  fi
 
-#   eval "$(pyenv init -)"
-# fi
+  source <(pyenv init -)
+fi
 
 # -- -- setup jdk -- -- -- --
 
@@ -42,7 +42,7 @@ fi
 
 # -- -- carapace for autocompletions -- -- -- --
 
-if command -v carapace &> /dev/null; then
+if command-exists carapace; then
   export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
   zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
   source <(carapace _carapace)
@@ -50,7 +50,7 @@ fi
 
 # -- -- smarter cd command -- -- -- --
 
-if command -v zoxide &>/dev/null; then
+if command-exists zoxide; then
   export _ZO_DATA_DIR="$HOME/.local/share"
   source <(zoxide init zsh)
 fi

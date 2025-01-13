@@ -32,8 +32,9 @@ export S3_DEFAULT_BUCKET="s3://..."
 
 # ---- misc ----
 
-pathadd "$HOME/.dotfiles/bin"
-pathadd "$HOME/.deno/bin"
+path-prepend "$HOME/.deno/bin"
+path-prepend "$HOME/.dotfiles/bin"
+
 
 # use gnu version of utils(find, grep, aws, etc.) on osx by default
 # if [ `type gfind &>/dev/null && echo 1` ]; then

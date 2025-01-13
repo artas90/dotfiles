@@ -32,6 +32,10 @@ str-trim() {
   sed -r 's/^ *//; s/ *$//'
 }
 
+command-exists() {
+  command -v "$1" &> /dev/null
+}
+
 ps5() {
   ps aux | sort -nrk 3,3 | head -n 5
 }
@@ -40,7 +44,7 @@ mo() {
   micro $(fzf --reverse --height 40%)
 }
 
-pathadd() {
+path-prepend() {
   if [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="$1${PATH:+":$PATH"}"
   fi
