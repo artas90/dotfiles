@@ -16,7 +16,10 @@ alias syncto="dfb-syncto"
 alias y="yazi"
 
 podman-machine-update() {
-  echo "using quay.io/podman/machine-os:$1"
+  if [ -z "$1" ]; then
+    echo "usage: podman-machine-update x.y"
+    return
+  fi
   podman machine os apply "quay.io/podman/machine-os:$1"
 }
 
@@ -48,6 +51,10 @@ path-prepend() {
   if [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="$1${PATH:+":$PATH"}"
   fi
+}
+
+tarnx() {
+  COPYFILE_DISABLE=1 command tar --no-xattrs $@
 }
 
 # similar to utils in .zprezto/modules/helper/init.zsh
@@ -152,6 +159,8 @@ if is-darwin; then
     local lsregister="${LaunchServices}/Versions/A/Support/lsregister"
     sudo $lsregister -kill -r -domain local -domain system -domain user
   }
+
+  alias dequarantine="xattr -d com.apple.quarantine"
 fi
 
 # _alvim() {

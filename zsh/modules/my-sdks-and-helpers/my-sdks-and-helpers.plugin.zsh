@@ -40,6 +40,25 @@ if  [ -z "$JAVA_HOME" ] && [ -d "$_jbr" ] ; then
   export JAVA_HOME="$_jbr"
 fi
 
+# -- -- setup fzf -- -- -- --
+
+if command-exists fzf; then
+  export FZF_COMPLETION_TRIGGER='~~'
+  source <(fzf --zsh)
+
+  _fzf_comprun() {
+    local command=$1
+    shift
+
+    case "$command" in
+      cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+      export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+      ssh)          fzf --preview 'dig {}'                   "$@" ;;
+      *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+    esac
+  }
+fi
+
 # -- -- carapace for autocompletions -- -- -- --
 
 if command-exists carapace; then
