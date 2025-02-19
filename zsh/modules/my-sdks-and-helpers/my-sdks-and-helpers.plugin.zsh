@@ -32,7 +32,7 @@ fi
 # -- -- setup jdk -- -- -- --
 
 if [ -z "$JAVA_HOME" ] && [ -f "/usr/libexec/java_home" ] ; then
-  export JAVA_HOME=`/usr/libexec/java_home`
+  export JAVA_HOME=`/usr/libexec/java_home 2>/dev/null`
 fi
 
 _jbr="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
