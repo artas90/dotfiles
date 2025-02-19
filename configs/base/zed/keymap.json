@@ -1,18 +1,14 @@
 [
   {
     "bindings": {
-      "cmd-t": "workspace::NewCenterTerminal"
+      "cmd-t": "workspace::NewCenterTerminal",
+      "cmd-n": "workspace::NewFile"
     }
   },
   {
     "context": "Editor",
     "bindings": {
-      "cmd-shift-d": "editor::DuplicateLineDown"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
+      "cmd-shift-d": "editor::DuplicateLineDown",
       "cmd-r": "search::ToggleReplace"
     }
   }
