@@ -47,14 +47,15 @@ mo() {
   micro $(fzf --reverse --height 40%)
 }
 
-path-prepend() {
-  if [[ ":$PATH:" != *":$1:"* ]]; then
-    PATH="$1${PATH:+":$PATH"}"
-  fi
+path-remove() {
+  local pth=":$PATH"    # add leading colon
+  pth=${pth//":$1"/""}  # now each path starts with colon
+  PATH="${pth#:}"       # remove leading colon
 }
 
-tarnx() {
-  COPYFILE_DISABLE=1 command tar --no-xattrs $@
+path-prepend() {
+  path-remove "$1"
+  PATH="$1:$PATH"
 }
 
 # similar to utils in .zprezto/modules/helper/init.zsh
@@ -153,6 +154,12 @@ if is-linux; then
 fi
 
 if is-darwin; then
+  alias dequarantine="xattr -d com.apple.quarantine"
+
+  tar() {
+    COPYFILE_DISABLE=1 command tar --no-xattrs $@
+  }
+
   osx-fix-menu-items() {
     local CoreServices="/System/Library/Frameworks/CoreServices.framework"
     local LaunchServices="${CoreServices}/Versions/A/Frameworks/LaunchServices.framework"
@@ -160,7 +167,14 @@ if is-darwin; then
     sudo $lsregister -kill -r -domain local -domain system -domain user
   }
 
-  alias dequarantine="xattr -d com.apple.quarantine"
+  if command-exists arch; then
+    x86() {
+      (
+        eval "$(/usr/local/bin/brew shellenv)"
+        arch --x86_64 $SHELL
+      )
+    }
+  fi
 fi
 
 # _alvim() {

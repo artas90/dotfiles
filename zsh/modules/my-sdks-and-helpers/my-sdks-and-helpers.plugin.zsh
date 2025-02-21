@@ -22,10 +22,7 @@
 # -- -- setup pyenv -- -- -- --
 
 if command-exists pyenv; then
-  if [ -d "$PYENV_ROOT/bin" ]; then
-    path-prepend "$PYENV_ROOT/bin"
-  fi
-
+  path-remove "$HOME/.pyenv/shims"
   source <(pyenv init -)
 fi
 

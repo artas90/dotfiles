@@ -35,7 +35,6 @@ export S3_DEFAULT_BUCKET="s3://..."
 path-prepend "$HOME/.deno/bin"
 path-prepend "$HOME/.dotfiles/bin"
 
-
 # use gnu version of utils(find, grep, aws, etc.) on osx by default
 # if [ `type gfind &>/dev/null && echo 1` ]; then
 #   GNUBINS=`gfind -L /usr/local/opt -maxdepth 3 -type d -name gnubin -printf '%p:'`
@@ -46,4 +45,4 @@ path-prepend "$HOME/.dotfiles/bin"
 # fi
 
 # optional config
-[ -f ~/.dotfiles/zsh/_local.zsh ] && source ~/.dotfiles/zsh/_local.zsh
+[ -s "$HOME/.dotfiles/zsh/_local.zsh" ] && source "$HOME/.dotfiles/zsh/_local.zsh"
