@@ -19,11 +19,11 @@
 #   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 # fi
 
-# -- -- setup pyenv -- -- -- --
+# -- -- fix pyenv -- -- -- --
 
 if command-exists pyenv; then
+  # fix before loading python module second time (ex. in tmux)
   path-remove "$HOME/.pyenv/shims"
-  source <(pyenv init -)
 fi
 
 # -- -- setup jdk -- -- -- --
