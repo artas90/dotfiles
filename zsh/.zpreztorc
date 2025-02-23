@@ -33,6 +33,10 @@ _preztomodules=(
   'my-misc-aliases'
   'my-base-config'
   'my-sdks-and-helpers'
+
+  # default and contrib modules
+  'python'
+  'omz-nvm'
 )
 zstyle ':prezto:load' pmodule $_preztomodules
 

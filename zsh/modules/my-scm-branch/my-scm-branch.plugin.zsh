@@ -14,9 +14,9 @@ _parse_git_commit () {
 
 _parse_git_dirty() {
   if [ -z "$(git status -s)" ]; then
-    echo "%F{green}✓%F{reset_color}"
+    echo -n "%F{green}✓%F{reset_color}"
   else
-    echo "%F{yellow}⚡%F{reset_color}"
+    echo -n "%F{yellow}⚡%F{reset_color}"
   fi
 }
 
@@ -28,9 +28,9 @@ _parse_hg_branch () {
 
 _parse_hg_dirty() {
   if [ -z "$(hg status 2>/dev/null)" ]; then
-    echo "%F{green}✓%F{reset_color}"
+    echo -n "%F{green}✓%F{reset_color}"
   else
-    echo "%F{yellow}⚡%F{reset_color}"
+    echo -n "%F{yellow}⚡%F{reset_color}"
   fi
 }
 
@@ -39,13 +39,13 @@ _parse_hg_dirty() {
 _git_or_hg_branch () {
   local git_branch=`_parse_git_branch || _parse_git_tag || _parse_git_commit`
   if [ ! $git_branch = "" ]; then
-    echo "±:$git_branch:"`_parse_git_dirty` && return
+    echo -n "±:$git_branch:"`_parse_git_dirty` && return
   fi
 
   local hg_branch=`_parse_hg_branch`
   if [ ! $hg_branch = "" ]; then
-    echo "☿:$hg_branch:"`_parse_hg_dirty` && return
+    echo -n "☿:$hg_branch:"`_parse_hg_dirty` && return
   fi
 
-  echo "○" && return
+  echo -n "○" && return
 }

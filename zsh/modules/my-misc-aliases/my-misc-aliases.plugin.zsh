@@ -156,7 +156,7 @@ fi
 if is-darwin; then
   alias dequarantine="xattr -d com.apple.quarantine"
 
-  tar() {
+  tarnx() {
     COPYFILE_DISABLE=1 command tar --no-xattrs $@
   }
 
@@ -167,12 +167,21 @@ if is-darwin; then
     sudo $lsregister -kill -r -domain local -domain system -domain user
   }
 
+  rmdsstore() {
+    find "${@:-.}" -type f -name .DS_Store -delete
+  }
+
   if command-exists arch; then
     x86() {
       (
         eval "$(/usr/local/bin/brew shellenv)"
         arch --x86_64 $SHELL
       )
+    }
+
+    _mythemerosetta() {
+      unset _mythemerosettainfo; typeset -gA _mythemerosettainfo
+      [ `arch` = "i386" ] && _mythemerosettainfo[prefix]="ř "
     }
   fi
 fi
