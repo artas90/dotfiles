@@ -15,6 +15,7 @@ case "$(uname -s)" in
   *)      echo "only osx or linux is supported"; exit ;;
 esac
 
+mkdir -p "$jetbrains_dir"
 ide_version=`ls "${jetbrains_dir}" | grep "IdeaIC" | grep -v backup | tail -n1`
 if [ -z "${ide_version}" ]; then
   ide_version="IdeaIC2024.1"
@@ -23,8 +24,10 @@ fi
 settings_dir="${jetbrains_dir}/${ide_version}"
 if [ -n "${REPLACE}" ]; then
   rm -rf "${settings_dir}" && mkdir "${settings_dir}"
+elif [ ! -d "$settings_dir" ]; then
+  mkdir "$settings_dir"
 else
-  echo "top replace settings run:"
+  echo "note: to replace settings run:"
   echo "  bash setup.sh --replace"
 fi
 

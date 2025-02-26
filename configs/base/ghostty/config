@@ -11,3 +11,25 @@ font-family = "Cascadia Code NF"
 font-size = 18
 
 quit-after-last-window-closed = true
+
+keybind = cmd+n=new_tab
+keybind = cmd+shift+n=new_window
+keybind = cmd+shift+w=close_surface
+# - close tab
+keybind = cmd+alt+w=unbind
+
+keybind = cmd+shift+r=new_split:right
+# - split right
+keybind = cmd+d=unbind
+
+# * tmux keybindings
+# - new tab
+keybind = cmd+t=text:\x02t
+# - close surface
+keybind = cmd+w=text:\x02w
+# - close tab
+keybind = cmd+q=text:\x02q
+# - horisontal split
+keybind = cmd+shift+h=text:\x02h
+# - vertical split
+keybind = cmd+shift+v=text:\x02v

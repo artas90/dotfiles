@@ -65,6 +65,7 @@
     "quick_actions": false
   },
   "terminal": {
+    "button": false,
     "detect_venv": "off",
     "toolbar": {
       "title": false,

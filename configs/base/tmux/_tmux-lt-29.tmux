@@ -65,8 +65,12 @@ bind-key C-t new-window
 
 # close tab
 unbind x
-bind-key w kill-window
-bind-key C-w kill-window
+bind-key q kill-window
+bind-key C-q kill-window
+
+# close pane
+bind-key w kill-pane
+bind-key C-w kill-pane
 
 # move tab to left/right
 bind-key o move-window -t 0

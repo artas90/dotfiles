@@ -28,12 +28,16 @@ fi
 
 # -- -- setup jdk -- -- -- --
 
-if [ -z "$JAVA_HOME" ] && [ -f "/usr/libexec/java_home" ] ; then
+_check_java_home() {
+  [ -z "$JAVA_HOME" ] || [ ! -d "$JAVA_HOME" ]
+}
+
+if _check_java_home && [ -f "/usr/libexec/java_home" ] ; then
   export JAVA_HOME=`/usr/libexec/java_home 2>/dev/null`
 fi
 
 _jbr="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
-if  [ -z "$JAVA_HOME" ] && [ -d "$_jbr" ] ; then
+if _check_java_home && [ -d "$_jbr" ] ; then
   export JAVA_HOME="$_jbr"
 fi
 
