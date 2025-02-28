@@ -1,10 +1,6 @@
 source "${ZDOTDIR}/.zprezto/runcoms/zpreztorc"
 
-if [ `whoami` = root ] && [ ! -f /.dockerenv ]; then
-  zstyle ':prezto:module:prompt' theme 'mytheme_red'
-else
-  zstyle ':prezto:module:prompt' theme 'mytheme_yellow'
-fi
+zstyle ':prezto:module:prompt' theme 'mytheme'
 
 # Override .zprezto/runcoms/zpreztorc, the order matters
 _preztomodules=(

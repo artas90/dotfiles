@@ -174,14 +174,10 @@ if is-darwin; then
   if command-exists arch; then
     x86() {
       (
+        export _mythemerosettamarker="ř "
         eval "$(/usr/local/bin/brew shellenv)"
         arch --x86_64 $SHELL
       )
-    }
-
-    _mythemerosetta() {
-      unset _mythemerosettainfo; typeset -gA _mythemerosettainfo
-      [ `arch` = "i386" ] && _mythemerosettainfo[prefix]="ř "
     }
   fi
 fi
