@@ -19,6 +19,7 @@
   "soft_wrap": "none",
   "current_line_highlight": "all",
   "show_whitespaces": "selection",
+  "on_last_window_closed": "quit_app",
 
   "autosave": "off",
   "format_on_save": "off",
