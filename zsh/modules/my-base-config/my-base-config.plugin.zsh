@@ -21,6 +21,12 @@ elif is-msys; then
   export VISUAL="nano"
 fi
 
+# hack for cursor ide integration
+use-cursor-editor() {
+  export EDITOR="cursor --wait"
+  export VISUAL="cursor --wait"
+}
+
 # ---- external configs ----
 
 export ZSH_PYENV_QUIET=true
