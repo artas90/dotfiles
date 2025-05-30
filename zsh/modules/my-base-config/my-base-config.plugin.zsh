@@ -2,6 +2,7 @@
 
 unsetopt AUTO_NAME_DIRS        # Don't collapse the path to the alias
 setopt   NO_BEEP               # Disabe sound on autocomplete fails
+setopt   CLOBBER               # Allows redirection to truncate existing files
 setopt   HIST_IGNORE_ALL_DUPS  # Ignore all occurrences of commands
 setopt   HIST_IGNORE_SPACE     # Ignore extra spaces
 setopt   HIST_REDUCE_BLANKS    # Remove blank lines from history
