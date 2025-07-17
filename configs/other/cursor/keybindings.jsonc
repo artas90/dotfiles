@@ -81,14 +81,14 @@
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": {
-            "text": "  use-cursor-editor && clear \u000D"
+            "text": "  use-cursor-editor; clear \u000D"
           }
         }
       ]
     }
   },
 
-  // -- explorer  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+  // -- explorer  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
   {
     "key": "cmd+e",
     "command": "-actions.findWithSelection"
@@ -109,7 +109,7 @@
     // "when": "viewContainer.workbench.view.explorer.enabled"
   },
 
-  // -- focusOpenEditorsView -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+  // -- focusOpenEditorsView -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
   {
     "key": "cmd+o",
     "command": "-workbench.action.files.openFile",
@@ -129,5 +129,23 @@
     "key": "cmd+o",
     "command": "workbench.files.action.focusOpenEditorsView",
     "when": "workbench.explorer.openEditorsView.active"
+  },
+
+  // -- command-runner -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
+  {
+    "key": "shift+alt+p",
+    "command": "command-runner.run"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "-command-runner.run"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "command-runner.runInTerminal"
+  },
+  {
+    "key": "ctrl+alt+r",
+    "command": "-command-runner.runInTerminal"
   },
 ]
