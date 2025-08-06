@@ -12,23 +12,25 @@ font-size = 18
 
 quit-after-last-window-closed = true
 
-keybind = cmd+n=new_tab
-keybind = cmd+shift+n=new_window
-keybind = cmd+shift+w=close_surface
+# - quit app
+keybind = cmd+q=unbind
 # - close tab
-keybind = cmd+alt+w=unbind
-
-keybind = cmd+shift+r=new_split:right
+keybind = cmd+w=unbind
 # - split right
 keybind = cmd+d=unbind
+
+keybind = cmd+n=new_tab
+keybind = cmd+alt+n=new_window
+keybind = cmd+alt+w=close_surface
+keybind = cmd+shift+r=new_split:right
 
 # * tmux keybindings
 # - new tab
 keybind = cmd+t=text:\x02t
 # - close surface
-keybind = cmd+w=text:\x02w
+keybind = cmd+shift+w=text:\x02w
 # - close tab
-keybind = cmd+q=text:\x02q
+keybind = cmd+shift+q=text:\x02q
 # - horisontal split
 keybind = cmd+shift+h=text:\x02h
 # - vertical split

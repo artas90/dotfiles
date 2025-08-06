@@ -32,8 +32,8 @@ Host YOUR-SERVER
   SetEnv TERM=xterm-256color
 
 # 3. or failback in tmux
-echo "\nset -g default-terminal xterm-256color" >> ~/.tmux.conf
+echo "set -g default-terminal xterm-256color" >> ~/.tmux.conf
 
 # 4. or failback in zsh
-echo "\nexport TERM=xterm-256color" >> ~/.dotfiles/zsh/_local.zsh
+echo "export TERM=xterm-256color" >> ~/.dotfiles/zsh/_local.zsh
 ```
