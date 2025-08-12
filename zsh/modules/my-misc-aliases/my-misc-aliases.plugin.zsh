@@ -60,6 +60,9 @@ path-prepend() {
 }
 
 # similar to utils in .zprezto/modules/helper/init.zsh
+function is-cursor {
+  [[ -n "${CURSOR_TRACE_ID}" ]]
+}
 function is-vscode {
   [[ "$TERM_PROGRAM" == vscode ]]
 }

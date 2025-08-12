@@ -8,10 +8,11 @@ setopt   HIST_IGNORE_SPACE     # Ignore extra spaces
 setopt   HIST_REDUCE_BLANKS    # Remove blank lines from history
 
 export LC_ALL=en_US.UTF-8
-export EDITOR=micro
-export VISUAL=micro
 
-if is-vscode; then
+if is-cursor; then
+  export EDITOR="cursor --wait"
+  export VISUAL="cursor --wait"
+elif is-vscode; then
   export EDITOR="code --wait"
   export VISUAL="code --wait"
 elif is-zed; then
@@ -20,13 +21,10 @@ elif is-zed; then
 elif is-msys; then
   export EDITOR="nano"
   export VISUAL="nano"
+else
+  export EDITOR="micro"
+  export VISUAL="micro"
 fi
-
-# hack for cursor ide integration
-use-cursor-editor() {
-  export EDITOR="cursor --wait"
-  export VISUAL="cursor --wait"
-}
 
 # ---- external configs ----
 
