@@ -1,5 +1,7 @@
 # change colors
 
+theme = "Paul Millr"
+
 # red
 ghostty +show-config | grep ' 1='
 #ff0000 => hsv(0°, 100%, 100%)

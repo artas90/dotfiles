@@ -1,4 +1,4 @@
-theme = "PaulMillr"
+theme = "Paul Millr"
 palette = 2=#e62e2e
 palette = 2=#78e60f
 palette = 3=#f2ca00
@@ -23,8 +23,10 @@ keybind = cmd+n=new_tab
 keybind = cmd+alt+n=new_window
 keybind = cmd+alt+w=close_surface
 keybind = cmd+shift+r=new_split:right
+keybind = cmd+shift+comma=open_config
 
-# * tmux keybindings
+# -- tmux keybindings --
+
 # - new tab
 keybind = cmd+t=text:\x02t
 # - close surface
@@ -35,3 +37,13 @@ keybind = cmd+shift+q=text:\x02q
 keybind = cmd+shift+h=text:\x02h
 # - vertical split
 keybind = cmd+shift+v=text:\x02v
+# - swap tab to left/right
+keybind = cmd+left_bracket=text:\x02[
+keybind = cmd+right_bracket=text:\x02]
+# - move tab to index
+keybind = cmd+period=text:\x02.
+# - rename tab
+keybind = cmd+comma=text:\x02,
+# - swith prev/next tab
+keybind = cmd+left=text:\x02p
+keybind = cmd+right=text:\x02n
