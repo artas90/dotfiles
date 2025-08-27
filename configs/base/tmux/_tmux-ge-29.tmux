@@ -72,21 +72,27 @@ bind-key C-q kill-window
 bind-key w kill-pane
 bind-key C-w kill-pane
 
-# move tab to left/right
+# move tab at start/end
 bind-key o move-window -t 0
 bind-key O move-window -t 99
+
+# move tab to left/right
+bind-key [ swap-window -t -1\; select-window -t -1
+bind-key ] swap-window -t +1\; select-window -t +1
 
 # C-Space (no prefix) to tab to next window
 unbind C-Space
 unbind -n C-Space
 unbind Space
 unbind -n Space
-# use space
-bind C-Space next-window
-bind -n C-Space next-window
-# use default n key as alias
+
+# next tab
 bind-key n next-window
 bind-key C-n next-window
+
+# previous tab
+bind-key p previous-window
+bind-key C-p previous-window
 
 ###########################################################################
 # Pane management / navigation
