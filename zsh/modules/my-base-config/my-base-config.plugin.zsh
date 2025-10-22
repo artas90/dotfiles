@@ -37,6 +37,7 @@ export S3_DEFAULT_BUCKET="s3://..."
 
 # ---- misc ----
 
+path-prepend "$HOME/.myserver/bin"
 path-prepend "$HOME/.deno/bin"
 path-prepend "$HOME/.dotfiles/bin"
 
