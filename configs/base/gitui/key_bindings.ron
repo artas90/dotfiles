@@ -1,0 +1,5 @@
+(
+  exit: Some(( code: Char('q'), modifiers: "CONTROL")),
+  exit_popup: Some(( code: Char('q'), modifiers: "")),
+  quit: Some(( code: Char('q'), modifiers: "")),
+)
