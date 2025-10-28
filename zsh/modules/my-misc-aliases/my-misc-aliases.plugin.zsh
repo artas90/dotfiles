@@ -10,8 +10,12 @@ alias grepb="GREP_COLOR='1;34' grep --color=always"
 alias grepm="GREP_COLOR='1;35' grep --color=always"
 alias grepc="GREP_COLOR='1;36' grep --color=always"
 
-alias deno-file-server="deno run -A jsr:@std/http/file-server"
+alias rggt="rg -g '!**/generated/**' -g '!**/*Test.kt' -g '!**/test_*.py' -g '!**/*.spec.*' -g '!**/*.test.*'"
+alias rgg="rg -g '!**/generated/**'"
+
 alias podps="podman ps --format 'table {{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}'"
+alias deno-file-server="deno run -A jsr:@std/http/file-server"
+alias qr8="qrencode -t ANSI256UTF8"
 alias mc="command mc --nosubshell"
 alias syncto="dfb-syncto"
 alias y="yazi"
