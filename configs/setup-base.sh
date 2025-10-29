@@ -7,6 +7,7 @@ _setup git
 _setup gitui
 _setup mc
 _setup tmux
+_setup htop
 _setup yazi
 _setup zed
 _setup ghostty
