@@ -1,1 +1,1 @@
-curl https://artas90.github.io/devsetup | sh
+curl https://skyfalconua.github.io/devsetup | sh

@@ -28,7 +28,7 @@ RUN (test -n "${SSH_PUBLIC_KEY}" && test -n "${SSH_PRIVATE_KEY}") && ( \
     ssh-keyscan gitlab.com > ~/.ssh/known_hosts && \
     chmod -R 600 ~/.ssh
 
-RUN git clone https://oauth2:${GITLAB_TOKEN}@gitlab.com/artas90/dotfiles.git  ~/.dotfiles && \
+RUN git clone https://oauth2:${GITLAB_TOKEN}@gitlab.com/skyfalconua/dotfiles.git  ~/.dotfiles && \
     sh -c 'cd ~/.dotfiles/configs/git && zsh ./setup.sh' && \
     sh -c 'cd ~/.dotfiles/configs/tig && zsh ./setup.sh' && \
     sh -c 'cd ~/.dotfiles/configs/mc && zsh ./setup.sh' && \

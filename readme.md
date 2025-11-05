@@ -2,19 +2,19 @@
 
 #### brew
 ```sh
-curl -sL artas90.github.io/brewsetup | sh
+curl -sL skyfalconua.github.io/brewsetup | sh
 ```
 
 #### oneliner
 ```sh
-curl -sL artas90.github.io/dotfiles | sh
+curl -sL skyfalconua.github.io/dotfiles | sh
 ```
 
 or manually
 
 #### 1. clone repo
 ```sh
-git clone https://github.com/artas90/dotfiles.git ~/.dotfiles
+git clone https://github.com/skyfalconua/dotfiles.git ~/.dotfiles
 ```
 
 #### 2. update ~/.zshrc
