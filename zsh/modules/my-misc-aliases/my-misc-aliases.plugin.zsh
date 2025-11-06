@@ -17,6 +17,7 @@ alias podps="podman ps --format 'table {{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.N
 alias deno-file-server="deno run -A jsr:@std/http/file-server"
 alias qr8="qrencode -t ANSI256UTF8"
 alias mc="command mc --nosubshell"
+alias gitt="gitui --watcher"
 alias syncto="dfb-syncto"
 alias y="yazi"
 
