@@ -2,7 +2,8 @@
   {
     "bindings": {
       "cmd-t": "workspace::NewCenterTerminal",
-      "cmd-n": "workspace::NewFile"
+      "cmd-n": "workspace::NewFile",
+      "cmd-l": "workspace::ToggleRightDock"
     }
   },
   {

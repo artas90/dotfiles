@@ -1,0 +1,94 @@
+[
+  // -- transform cases -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+  {
+    "key": "cmd+k cmd+-",
+    "command": "editor.action.transformToKebabcase",
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.transformToKebabcase",
+        "editor.action.transformToPascalcase",
+      ]
+    }
+  },
+  {
+    "key": "cmd+k cmd+m",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.transformToKebabcase",
+        "editor.action.transformToCamelcase",
+      ]
+    }
+  },
+  {
+    "key": "cmd+k cmd+=",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.transformToSnakecase",
+        "editor.action.transformToUppercase",
+      ]
+    }
+  },
+
+  // -- remove default zooming -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+  {
+    "key": "cmd+numpad0",
+    "command": "-workbench.action.zoomReset"
+  },
+  {
+    "key": "cmd+=",
+    "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "cmd+-",
+    "command": "-workbench.action.zoomOut"
+  },
+
+  // -- add the same but with shift default zooming -- -- -- -- -- -- -- -- -- -
+  {
+    "key": "shift+cmd+0",
+    "command": "workbench.action.zoomReset"
+  },
+  {
+    "key": "shift+cmd+=",
+    "command": "workbench.action.zoomIn"
+  },
+  {
+    "key": "shift+cmd+-",
+    "command": "workbench.action.zoomOut"
+  },
+
+  // -- new terminal in tab -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+  {
+    "key": "cmd+t",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+t",
+    "command": "-workbench.action.showAllSymbols"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.createTerminalEditor",
+  },
+
+  // -- new terminal in tab -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+  {
+    "key": "ctrl+shift+r",
+    "command": "-command-runner.run"
+  },
+  {
+    "key": "ctrl+alt+r",
+    "command": "-command-runner.runInTerminal"
+  },
+  {
+    "key": "cmd+alt+p",
+    "command": "command-runner.run"
+  },
+
+]
